@@ -72,7 +72,7 @@ public class NpcShowName : MonoBehaviour
 
         if (npcName == true && Camera.main.fieldOfView == 20f)
         {
-            GUI.Label(new Rect(position.x - 105, Screen.height - position.y - 130, textSize.x, textSize.y), "Give food", guiStyle);
+            GUI.Label(new Rect(position.x - 105, Screen.height - position.y - 100, textSize.x, textSize.y), "Give food", guiStyle);
         }
     }
 }
