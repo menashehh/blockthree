@@ -11,14 +11,17 @@ public class ScrollZoom : MonoBehaviour
     float maxFov = 60f;
     float sensitivity = 20f;
 
-    // Update is called once per frame
     void Update()
     {
         // gameObject.transform.Translate(0, 0, Input.GetAxis("Mouse ScrollWheel") * ROTSpeed);
 
-        float fov = Camera.main.fieldOfView;
-        fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
-        fov = Mathf.Clamp(fov, minFov, maxFov);
-        Camera.main.fieldOfView = fov;
+        // Zoom in or zoom our only if the NPC name text is hidden
+        if (!GameObject.Find("NPC1").GetComponent<NpcShowName>().Object.activeSelf && !GameObject.Find("NPC2").GetComponent<NpcShowName>().Object.activeSelf)
+        {
+            float fov = Camera.main.fieldOfView;
+            fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+            fov = Mathf.Clamp(fov, minFov, maxFov);
+            Camera.main.fieldOfView = fov;
+        }
     }
 }
