@@ -10,18 +10,31 @@ public class ResourceUpdate : MonoBehaviour
     public float resources;
     public int DelayAmount = 1;
 
-    protected float Timer;
+    public float Timer;
 
-    void Update()
+    private void Start()
     {
+        if (MainManager.Instance != null)
+        {
+            resources = MainManager.Instance.playerResources;
+        }
+    }
+
+    private void Update()
+    {
+        /*
         Timer += Time.deltaTime;
 
         if (Timer >= DelayAmount)
         {
             Timer = 0f;
             resources++;
-            resourceText.text = "" + resources;
         }
+        resourceText.text = "" + resources;
+        */
+
+        MainManager.Instance.playerResources = resources;
+
         resourceText.text = "" + resources;
     }
 
