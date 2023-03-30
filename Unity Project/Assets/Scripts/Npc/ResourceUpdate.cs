@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class ResourceUpdate : MonoBehaviour
 {
     public TMP_Text resourceText;
-    private float resources;
+    public float resources;
     public int DelayAmount = 1;
 
     protected float Timer;
@@ -22,6 +22,7 @@ public class ResourceUpdate : MonoBehaviour
             resources++;
             resourceText.text = "" + resources;
         }
+        resourceText.text = "" + resources;
     }
 
 

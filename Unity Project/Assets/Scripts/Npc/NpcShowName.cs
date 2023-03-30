@@ -5,6 +5,7 @@ using UnityEngine;
 public class NpcShowName : MonoBehaviour
 {
     public GameObject Object; // NPC name (text)
+    public GameObject BuildButton;
 
     public bool npcName = false; // Variable to store if the npc name text uis displayed or not
     private int menuOpen = 0; // Variable to store if the NPC interaction menu is open or not
@@ -14,6 +15,7 @@ public class NpcShowName : MonoBehaviour
     void Start()
     {
         Object.SetActive(false); // Hide the NPC name text
+        BuildButton.SetActive(false);
     }
 
     private void OnMouseEnter()
@@ -72,11 +74,19 @@ public class NpcShowName : MonoBehaviour
 
         if (npcName == true && Camera.main.fieldOfView == 40f)
         {
-            GUI.Label(new Rect(position.x - 105, Screen.height - position.y - 100, textSize.x, textSize.y), "Give food", guiStyle);
+            GUI.Label(new Rect(position.x - 105, Screen.height - position.y - 100, textSize.x, textSize.y), "Build trees!", guiStyle);
         } else if (Camera.main.fieldOfView == 40f)
         {
             guiStyle.fontSize = 75;
             GUI.Label(new Rect(position.x - 35, Screen.height - position.y - 100, textSize.x, textSize.y), "!", guiStyle);
         }
+    }
+
+    void Update()
+    {
+        if (npcName == true && Camera.main.fieldOfView == 40f)
+        {
+            BuildButton.SetActive(true);
+        } else BuildButton.SetActive(false);
     }
 }
