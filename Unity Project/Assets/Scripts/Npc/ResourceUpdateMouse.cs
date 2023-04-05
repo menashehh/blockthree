@@ -10,6 +10,7 @@ public class ResourceUpdateMouse : MonoBehaviour
 {
     ResourceUpdate refScript;
     public GameObject station;
+    public GameObject instance;
 
     void Awake()
     {
@@ -28,6 +29,11 @@ public class ResourceUpdateMouse : MonoBehaviour
             refScript.resources++;
         }
         refScript.resourceText.text = "" + refScript.resources;
+
+        if (instance.activeSelf)
+        {
+            refScript.stationActive = true;
+        }
     }
 
     private void OnMouseDown()

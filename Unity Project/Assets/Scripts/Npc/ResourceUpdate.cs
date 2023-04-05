@@ -12,6 +12,8 @@ public class ResourceUpdate : MonoBehaviour
 
     public float Timer;
 
+    public bool stationActive = false;
+
     private void Start()
     {
         if (MainManager.Instance != null)
@@ -34,6 +36,11 @@ public class ResourceUpdate : MonoBehaviour
         */
 
         MainManager.Instance.playerResources = resources;
+
+        if (stationActive)
+        {
+            MainManager.Instance.isBuilt = true;
+        }
 
         resourceText.text = "" + resources;
     }
