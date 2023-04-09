@@ -6,10 +6,20 @@ public class CameraPan : MonoBehaviour
 {
     public Camera cameraObj;
     public GameObject myGameObj;
+    public GameObject myGameObj2;
+    public GameObject myGameObj3;
     public float speed = 2f;
+
+    private void Awake()
+    {
+        //transform.LookAt(myGameObj.transform.position);
+        cameraObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
 
     void Update()
     {
+        transform.LookAt(myGameObj.transform.position);
+
         RotateCamera();
     }
 

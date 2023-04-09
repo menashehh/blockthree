@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Resources;
 using System.Runtime.InteropServices;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class ResourceUpdateMouse : MonoBehaviour
@@ -26,7 +25,24 @@ public class ResourceUpdateMouse : MonoBehaviour
         if (refScript.Timer >= refScript.DelayAmount)
         {
             refScript.Timer = 0f;
-            refScript.resources++;
+            if (GameObject.Find("appleTree") && !GameObject.Find("wolfHouse"))
+            {
+                refScript.resources += 3;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText1();
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText2();
+            }
+            else if (GameObject.Find("appleTree") && GameObject.Find("wolfHouse"))
+            {
+                refScript.resources += 7;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText1();
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText2();
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText4();
+            }
+            else
+            {
+                refScript.resources++;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText1();
+            }
         }
         refScript.resourceText.text = "" + refScript.resources;
 

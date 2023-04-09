@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NpcShowName : MonoBehaviour
+public class NpcShowName2 : MonoBehaviour
 {
     public GameObject Object; // NPC name (text)
-    public GameObject BuildButton;
-    public GameObject BuildButton2;
     public GameObject BuildButton3;
-    public GameObject wormText;
+    public GameObject BuildButton2;
+    public GameObject BuildButton;
     public GameObject wolfText;
 
-    public bool npcName = false; // Variable to store if the npc name text uis displayed or not
+    public bool npcName; // Variable to store if the npc name text uis displayed or not
     private int menuOpen = 0; // Variable to store if the NPC interaction menu is open or not
 
     private GUIStyle guiStyle = new GUIStyle(); // Style for the GUI
@@ -19,16 +19,16 @@ public class NpcShowName : MonoBehaviour
     void Start()
     {
         Object.SetActive(false); // Hide the NPC name text
-        BuildButton.SetActive(false);
-        BuildButton2.SetActive(false);
         BuildButton3.SetActive(false);
-        wormText.SetActive(false);
+        BuildButton2.SetActive(false);
+        BuildButton.SetActive(false);
         wolfText.SetActive(false);
+        npcName = false;
     }
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 40f && !GameObject.Find("NPC2").GetComponent<NpcShowName>().Object.activeSelf)
+        if (Camera.main.fieldOfView == 40f)
         {
             Object.SetActive(true); // Unhide the NPC name text if the camera is zoomed in 
         }
@@ -65,10 +65,10 @@ public class NpcShowName : MonoBehaviour
         // Open and close the interaction menu on mouse click
         if (menuOpen == 1)
         {
-            menuOpen = 0;
+            menuOpen = 0;   
         }
         else if (Camera.main.fieldOfView == 40f)
-        { 
+        {
             menuOpen++;
         }
     }
@@ -76,25 +76,30 @@ public class NpcShowName : MonoBehaviour
     private void OnGUI()
     {
         var position = Camera.main.WorldToScreenPoint(this.transform.position); // Position of the object
-        var textSize = GUI.skin.label.CalcSize(new GUIContent("cloud"));
+        var textSize = GUI.skin.label.CalcSize(new GUIContent("apple"));
 
         guiStyle.fontSize = 50; // Font size
 
-        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("worm"))
+        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("wolf"))
         {
-            GUI.Label(new Rect(position.x - 105, Screen.height - position.y - 100, textSize.x, textSize.y), "Build cloud!", guiStyle);
-        } else if (Camera.main.fieldOfView == 40f && !GameObject.Find("worm"))
+            GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build apple!", guiStyle);
+        }
+        else if (Camera.main.fieldOfView == 40f && npcName == false && !GameObject.Find("wolf"))
         {
             guiStyle.fontSize = 75;
-            GUI.Label(new Rect(position.x - 35, Screen.height - position.y - 100, textSize.x, textSize.y), "!", guiStyle);
+            GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
         }
     }
-
+    
     void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("worm"))
+        if (BuildButton2)
         {
-            BuildButton.SetActive(true);
-        } else BuildButton.SetActive(false);
+            if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("wolf"))
+            {
+                BuildButton2.SetActive(true);
+            }
+            else BuildButton2.SetActive(false);
+        }
     }
 }

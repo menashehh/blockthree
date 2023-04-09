@@ -9,7 +9,9 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
 
     public float playerResources;
-    public bool isBuilt = false;
+    public int playerLots;
+    public bool isBuilt;
+    public int phase;
 
     public float Timer;
     public int DelayAmount = 1;
