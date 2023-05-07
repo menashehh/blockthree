@@ -20,7 +20,7 @@ public class ResourceUpdate2 : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (Camera.main.fieldOfView == 40f)
+        if (Camera.main.fieldOfView == 40f && !GameObject.Find("Background"))
         {
             if (this.name == "Worm") refScript.AddResourceWorm();
 

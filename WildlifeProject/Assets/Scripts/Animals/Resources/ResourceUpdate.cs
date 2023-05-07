@@ -39,7 +39,7 @@ public class ResourceUpdate : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (Camera.main.fieldOfView == 40f)
+        if (Camera.main.fieldOfView == 40f && !GameObject.Find("Background"))
         {
             AddResourceFrog();
         }

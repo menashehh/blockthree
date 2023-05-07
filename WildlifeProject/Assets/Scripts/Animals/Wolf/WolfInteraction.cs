@@ -30,7 +30,7 @@ public class WolfInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf House"))
+        if (Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf House") && !GameObject.Find("Background"))
         {
             wolfText.SetActive(true);
         }
@@ -38,7 +38,7 @@ public class WolfInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameObject.Find("Wolf House"))
+        if (!GameObject.Find("Wolf House") && !GameObject.Find("Background"))
         {
             if (menuOpen == 0 && Camera.main.fieldOfView == 40f) npcName = true;
 
@@ -63,20 +63,23 @@ public class WolfInteraction : MonoBehaviour
 
         guiStyle.fontSize = 50;
 
-        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("Bone"))
+        if (!GameObject.Find("Background"))
         {
-            GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build bone!", guiStyle);
-        }
-        else if (Camera.main.fieldOfView == 40f && npcName == false && !GameObject.Find("Bone"))
-        {
-            guiStyle.fontSize = 75;
-            GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
+            if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("Bone"))
+            {
+                GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build bone!", guiStyle);
+            }
+            else if (Camera.main.fieldOfView == 40f && npcName == false && !GameObject.Find("Bone"))
+            {
+                guiStyle.fontSize = 75;
+                GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
+            }
         }
     }
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf House"))
+        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf House") && !GameObject.Find("Background"))
         {
             BuildButtonWolf.SetActive(true);
         }

@@ -24,39 +24,44 @@ public class CameraMechanics : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(myGameObj.transform.position);
-        RotateCamera();
-
-        // Camera Zoom
-
-        var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (!GameObject.Find("Worm"))
+        if (!GameObject.Find("Background"))
         {
-            if (!GameObject.Find("frogText") && !frogCollider.bounds.IntersectRay(mouseRay))
+            transform.LookAt(myGameObj.transform.position);
+            RotateCamera();
+
+            // Camera Zoom
+
+            var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (!GameObject.Find("Worm"))
             {
-                float fov = Camera.main.fieldOfView;
-                fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
-                fov = Mathf.Clamp(fov, minFov, maxFov);
-                Camera.main.fieldOfView = fov;
+                if (!GameObject.Find("frogText") && !frogCollider.bounds.IntersectRay(mouseRay))
+                {
+                    float fov = Camera.main.fieldOfView;
+                    fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+                    fov = Mathf.Clamp(fov, minFov, maxFov);
+                    Camera.main.fieldOfView = fov;
+                }
             }
-        } else if (!GameObject.Find("Wolf"))
-        {
-            if (!GameObject.Find("wormText") && !wormCollider.bounds.IntersectRay(mouseRay))
+            else if (!GameObject.Find("Wolf"))
             {
-                float fov = Camera.main.fieldOfView;
-                fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
-                fov = Mathf.Clamp(fov, minFov, maxFov);
-                Camera.main.fieldOfView = fov;
+                if (!GameObject.Find("wormText") && !wormCollider.bounds.IntersectRay(mouseRay))
+                {
+                    float fov = Camera.main.fieldOfView;
+                    fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+                    fov = Mathf.Clamp(fov, minFov, maxFov);
+                    Camera.main.fieldOfView = fov;
+                }
             }
-        } else if (!GameObject.Find("Wolf House"))
-        {
-            if (!GameObject.Find("wolfText") && !wolfCollider.bounds.IntersectRay(mouseRay))
+            else if (!GameObject.Find("Wolf House"))
             {
-                float fov = Camera.main.fieldOfView;
-                fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
-                fov = Mathf.Clamp(fov, minFov, maxFov);
-                Camera.main.fieldOfView = fov;
+                if (!GameObject.Find("wolfText") && !wolfCollider.bounds.IntersectRay(mouseRay))
+                {
+                    float fov = Camera.main.fieldOfView;
+                    fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+                    fov = Mathf.Clamp(fov, minFov, maxFov);
+                    Camera.main.fieldOfView = fov;
+                }
             }
         }
     }

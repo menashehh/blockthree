@@ -56,7 +56,7 @@ public class ResourceUpdateMouse : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (Camera.main.fieldOfView == 40f)
+        if (Camera.main.fieldOfView == 40f && !GameObject.Find("Background"))
         {
             if (this.name == "Flower") refScript.AddResourceFlower();
 

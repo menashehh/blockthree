@@ -30,7 +30,7 @@ public class WormInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf"))
+        if (Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf") && !GameObject.Find("Background"))
         {
             wormText.SetActive(true);
         }
@@ -38,7 +38,7 @@ public class WormInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameObject.Find("Wolf"))
+        if (!GameObject.Find("Wolf") && !GameObject.Find("Background"))
         {
             if (menuOpen == 0 && Camera.main.fieldOfView == 40f) npcName = true;
 
@@ -63,20 +63,23 @@ public class WormInteraction : MonoBehaviour
 
         guiStyle.fontSize = 50;
 
-        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf"))
+        if (!GameObject.Find("Background"))
         {
-            GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build apple!", guiStyle);
-        }
-        else if (Camera.main.fieldOfView == 40f && npcName == false && !GameObject.Find("Wolf"))
-        {
-            guiStyle.fontSize = 75;
-            GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
+            if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf"))
+            {
+                GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build apple!", guiStyle);
+            }
+            else if (Camera.main.fieldOfView == 40f && npcName == false && !GameObject.Find("Wolf"))
+            {
+                guiStyle.fontSize = 75;
+                GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
+            }
         }
     }
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf"))
+        if (npcName == true && Camera.main.fieldOfView == 40f && !GameObject.Find("Wolf") && !GameObject.Find("Background"))
         {
             BuildButtonWorm.SetActive(true);
         }
