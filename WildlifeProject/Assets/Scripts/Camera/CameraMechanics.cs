@@ -7,8 +7,9 @@ public class CameraMechanics : MonoBehaviour
 {
     public Camera cameraObj;
     public GameObject myGameObj;
-    public Collider frogCollider;
     public Collider wormCollider;
+    public Collider frogCollider;
+    public Collider gooseCollider;
     public Collider wolfCollider;
 
     public float speed = 2f;
@@ -33,7 +34,17 @@ public class CameraMechanics : MonoBehaviour
 
             var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (!GameObject.Find("Worm"))
+            if (!GameObject.Find("Frog"))
+            {
+                if (!GameObject.Find("wormText") && !wormCollider.bounds.IntersectRay(mouseRay))
+                {
+                    float fov = Camera.main.fieldOfView;
+                    fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+                    fov = Mathf.Clamp(fov, minFov, maxFov);
+                    Camera.main.fieldOfView = fov;
+                }
+            }
+            else if (!GameObject.Find("Goose"))
             {
                 if (!GameObject.Find("frogText") && !frogCollider.bounds.IntersectRay(mouseRay))
                 {
@@ -45,7 +56,7 @@ public class CameraMechanics : MonoBehaviour
             }
             else if (!GameObject.Find("Wolf"))
             {
-                if (!GameObject.Find("wormText") && !wormCollider.bounds.IntersectRay(mouseRay))
+                if (!GameObject.Find("gooseText") && !gooseCollider.bounds.IntersectRay(mouseRay))
                 {
                     float fov = Camera.main.fieldOfView;
                     fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
@@ -53,7 +64,7 @@ public class CameraMechanics : MonoBehaviour
                     Camera.main.fieldOfView = fov;
                 }
             }
-            else if (!GameObject.Find("Wolf House"))
+            else if (!GameObject.Find("Sparrow"))
             {
                 if (!GameObject.Find("wolfText") && !wolfCollider.bounds.IntersectRay(mouseRay))
                 {

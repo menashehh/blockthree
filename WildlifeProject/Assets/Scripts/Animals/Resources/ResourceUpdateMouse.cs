@@ -11,13 +11,10 @@ public class ResourceUpdateMouse : MonoBehaviour
 
     ResourceUpdate refScript;
     public GameObject station;
-    public GameObject instance;
 
     void Awake()
     {
         refScript = station.GetComponent<ResourceUpdate>();
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
@@ -26,43 +23,86 @@ public class ResourceUpdateMouse : MonoBehaviour
 
         if (refScript.Timer >= refScript.DelayAmount)
         {
-            refScript.Timer = 0f;
-            if (GameObject.Find("Apple Tree") && !GameObject.Find("Wolf House"))
+            if (GameObject.Find("Apple Tree"))
             {
-                refScript.resources += 3;
+                refScript.resources += 1;
                 if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText1();
+            }
+
+            if (GameObject.Find("Flower"))
+            {
+                refScript.resources += 2;
                 if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText2();
             }
-            else if (GameObject.Find("Apple Tree") && GameObject.Find("Wolf House"))
+
+            if (GameObject.Find("Goose Station"))
             {
-                refScript.resources += 7;
-                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText1();
-                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText2();
+                refScript.resources += 4;
                 if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText4();
             }
-            else
+
+            if (GameObject.Find("Wolf House"))
             {
-                refScript.resources++;
-                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText1();
+                refScript.resources += 8;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText8();
             }
+
+            if (GameObject.Find("Sparrow Station"))
+            {
+                refScript.resources += 3;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText3();
+            }
+
+            if (GameObject.Find("Buzzard Station"))
+            {
+                refScript.resources += 5;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText5();
+            }
+
+            if (GameObject.Find("Beaver Station"))
+            {
+                refScript.resources += 7;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText7();
+            }
+
+            if (GameObject.Find("Fly Station"))
+            {
+                refScript.resources += 9;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText9();
+            }
+
+            if (GameObject.Find("Bee Station"))
+            {
+                refScript.resources += 11;
+                if (refScript.FloatingTextPrefab != null) refScript.ShowFloatingText11();
+            }
+
+            refScript.Timer = 0f;
         }
         refScript.resourceText.text = "" + refScript.resources;
-
-        if (instance.activeSelf)
-        {
-            refScript.stationActive = true;
-        }
     }
 
     private void OnMouseDown()
     {
-        if (Camera.main.fieldOfView == 40f && !GameObject.Find("Background"))
+        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background"))
         {
-            if (this.name == "Flower") refScript.AddResourceFlower();
-
             if (this.name == "Apple Tree") refScript.AddResourceAppleTree();
 
+            if (this.name == "Flower") refScript.AddResourceFlower();
+
+            if (this.name == "Goose Station") refScript.AddResourceGooseS();
+
             if (this.name == "Wolf House") refScript.AddResourceWolfHouse();
+
+            if (this.name == "Sparrow Station") refScript.AddResourceSparrowS();
+
+            if (this.name == "Buzzard Station") refScript.AddResourceBuzzardS();
+
+            if (this.name == "Beaver Station") refScript.AddResourceBeaverS();
+
+            if (this.name == "Fly Station") refScript.AddResourceFlyS();
+
+            if (this.name == "Bee Station") refScript.AddResourceBeeS();
         }
     }
 }
