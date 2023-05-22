@@ -23,6 +23,7 @@ public class CameraMechanicsRework : MonoBehaviour
     public Collider flyCollider;
     public Collider beeCollider;
 
+    float TouchZoomSpeed = 0.1f;
     private int cameraToggle = 1;
     public float speed = 2f;
 
@@ -41,7 +42,7 @@ public class CameraMechanicsRework : MonoBehaviour
 
     private void Start()
     {
-        CameraButtonText.text = "Rotate";
+        CameraButtonText.text = "Drag";
         transform.LookAt(myGameObj.transform.position);
     }
 
@@ -50,22 +51,19 @@ public class CameraMechanicsRework : MonoBehaviour
         if (!GameObject.Find("Background"))
         {
             // CAMERA ROTATE
-            if (cameraToggle == 0)
+            if (cameraToggle == 0 && (Input.GetMouseButton(0) || Input.touchCount == 1))
             {
-                if (Input.GetMouseButton(0))
-                {
-                    //cameraObj.transform.RotateAround(myGameObj.transform.position, cameraObj.transform.up, -Input.GetAxis("Mouse X") * speed);
-                    transform.RotateAround(myGameObj.transform.position, Vector3.up, -Input.GetAxis("Mouse X") * speed);
-                }
+                //cameraObj.transform.RotateAround(myGameObj.transform.position, cameraObj.transform.up, -Input.GetAxis("Mouse X") * speed);
+                transform.RotateAround(myGameObj.transform.position, Vector3.up, -Input.GetAxis("Mouse X") * speed);
             }
 
             // CAMERA DRAG
-            if (cameraToggle == 1)
+            if (cameraToggle == 1 && (Input.GetMouseButton(0) || Input.touchCount == 1))
             {
-                if (Input.GetMouseButton(0) && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
+                if (!GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
                 {
-                    float speed = cameraDragSpeed * Time.deltaTime;
-                    Camera.main.transform.position -= new Vector3(Input.GetAxis("Mouse X") * speed, 0, Input.GetAxis("Mouse Y") * speed);
+                    float speedDrag = cameraDragSpeed * Time.deltaTime;
+                    Camera.main.transform.position -= new Vector3(Input.GetAxis("Mouse X") * speedDrag, 0, Input.GetAxis("Mouse Y") * speedDrag);
                     Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16, 7), transform.position.y, Mathf.Clamp(transform.position.z, -8, 18));
                 }
             }
@@ -74,6 +72,31 @@ public class CameraMechanicsRework : MonoBehaviour
             var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if ((wormCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("wormText")) && !GameObject.Find("Frog"))
+            {
+                return;
+            }
+
+            if (GameObject.Find("Hex Button Worm"))
+            {
+                return;
+            }
+
+            if (GameObject.Find("Hex Button Frog"))
+            {
+                return;
+            }
+
+            if (GameObject.Find("Hex Button Buzzard"))
+            {
+                return;
+            }
+
+            if (GameObject.Find("Hex Button Wolf"))
+            {
+                return;
+            }
+
+            if (GameObject.Find("Hex Button Fly"))
             {
                 return;
             }
@@ -118,7 +141,33 @@ public class CameraMechanicsRework : MonoBehaviour
                 return;
             }
 
-            CameraZoom();
+            CameraZoom(); // PC
+
+            // MOBILE PINCH ZOOM
+            if (Input.touchCount == 2)
+            {
+                Touch tZero = Input.GetTouch(0);
+                Touch tOne = Input.GetTouch(1);
+
+                Vector2 tZeroPrevious = tZero.position - tZero.deltaPosition;
+                Vector2 tOnePrevious = tOne.position - tOne.deltaPosition;
+
+                float oldTouchDistance = Vector2.Distance(tZeroPrevious, tOnePrevious);
+                float currentTouchDistance = Vector2.Distance(tZero.position, tOne.position);
+
+                float deltaDistance = oldTouchDistance - currentTouchDistance;
+                Zoom(deltaDistance, TouchZoomSpeed);
+            }
+
+            if (Camera.main.fieldOfView < minFov)
+            {
+                Camera.main.fieldOfView = 80f;
+            }
+            else
+            if (Camera.main.fieldOfView > maxFov)
+            {
+                Camera.main.fieldOfView = 100f;
+            }
         }
     }
 
@@ -130,10 +179,16 @@ public class CameraMechanicsRework : MonoBehaviour
         Camera.main.fieldOfView = fov;
     }
 
+    void Zoom(float deltaMagnitudeDiff, float speed)
+    {
+        Camera.main.fieldOfView += deltaMagnitudeDiff * speed;
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFov, maxFov);
+    }
+
     // TOGGLE SCRIPT FOR BUTTON
     public void ToggleCameraMode()
     {
-        if (!GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
+        if (!GameObject.Find("Background") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
         {
             if (cameraToggle == 0)
             {

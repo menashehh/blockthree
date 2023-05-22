@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WolfInteraction : MonoBehaviour
@@ -7,6 +8,7 @@ public class WolfInteraction : MonoBehaviour
     // Script for the interactions with the wolf (name, task, button)
 
     public GameObject wolfText;
+    public TMP_Text wolfLevel;
     public GameObject BuildButtonWolf;
 
     public bool npcName = false;
@@ -16,7 +18,7 @@ public class WolfInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Wolf House") && !GameObject.Find("Background") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
+        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("beeText"))
         {
             wolfText.SetActive(true);
         }
@@ -24,7 +26,7 @@ public class WolfInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameObject.Find("Wolf House") && !GameObject.Find("Background") && GameObject.Find("wolfText"))
+        if (!GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("beeText"))
         {
             if (menuOpen == 0 && Camera.main.fieldOfView == 80f) npcName = true;
 
@@ -36,7 +38,7 @@ public class WolfInteraction : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (npcName == false && !GameObject.Find("Wolf House"))
+        if (npcName == false)
         {
             wolfText.SetActive(false);
         }
@@ -49,13 +51,16 @@ public class WolfInteraction : MonoBehaviour
 
         guiStyle.fontSize = 50;
 
-        if (!GameObject.Find("Background"))
+        if (!GameObject.Find("Background") && wolfLevel.text != "Level 2")
         {
+            /*
             if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Bone"))
             {
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build bone!", guiStyle);
             }
-            else if (Camera.main.fieldOfView == 80f && npcName == false && !GameObject.Find("Bone"))
+            else
+            */
+            if (Camera.main.fieldOfView == 80f && npcName == false /* && !GameObject.Find("Bone") */)
             {
                 guiStyle.fontSize = 75;
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
@@ -65,7 +70,7 @@ public class WolfInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Wolf House") && !GameObject.Find("Background"))
+        if (npcName == true && Camera.main.fieldOfView == 80f /* && !GameObject.Find("Wolf House") */ && !GameObject.Find("Background"))
         {
             BuildButtonWolf.SetActive(true);
         }
