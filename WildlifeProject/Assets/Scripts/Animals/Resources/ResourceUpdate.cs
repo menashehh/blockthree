@@ -11,7 +11,7 @@ public class ResourceUpdate : MonoBehaviour
     public TMP_Text resourceText;
     public GameObject FloatingTextPrefab;
 
-    public float resources = 0;
+    public float resources;
     public float Timer;
     public int DelayAmount = 1;
 

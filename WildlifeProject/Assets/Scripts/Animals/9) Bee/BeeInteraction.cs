@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class BeeInteraction : MonoBehaviour
@@ -8,7 +7,6 @@ public class BeeInteraction : MonoBehaviour
     // Script for the interactions with the bee (name, task, button)
 
     public GameObject beeText;
-    public TMP_Text beeLevel;
     public GameObject BuildButtonBee;
 
     public bool npcName = false;
@@ -18,7 +16,7 @@ public class BeeInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly"))
+        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Bee Req") && !GameObject.Find("Background") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("beaverText"))
         {
             beeText.SetActive(true);
         }
@@ -26,7 +24,7 @@ public class BeeInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && GameObject.Find("beeText"))
+        if (!GameObject.Find("Bee Req") && !GameObject.Find("Background") && GameObject.Find("beeText"))
         {
             if (menuOpen == 0 && Camera.main.fieldOfView == 80f) npcName = true;
 
@@ -38,7 +36,7 @@ public class BeeInteraction : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (npcName == false)
+        if (npcName == false && !GameObject.Find("Bee Req"))
         {
             beeText.SetActive(false);
         }
@@ -51,16 +49,13 @@ public class BeeInteraction : MonoBehaviour
 
         guiStyle.fontSize = 50;
 
-        if (!GameObject.Find("Background") && beeLevel.text != "Level 1")
+        if (!GameObject.Find("Background"))
         {
-            /*
             if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Bee Req"))
             {
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build!", guiStyle);
             }
-            else
-            */
-            if (Camera.main.fieldOfView == 80f && npcName == false /* && !GameObject.Find("Bee Req") */)
+            else if (Camera.main.fieldOfView == 80f && npcName == false && !GameObject.Find("Bee Req"))
             {
                 guiStyle.fontSize = 75;
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
@@ -70,7 +65,7 @@ public class BeeInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 80f /* && !GameObject.Find("Bee Req") */ && !GameObject.Find("Background"))
+        if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Bee Req") && !GameObject.Find("Background"))
         {
             BuildButtonBee.SetActive(true);
         }

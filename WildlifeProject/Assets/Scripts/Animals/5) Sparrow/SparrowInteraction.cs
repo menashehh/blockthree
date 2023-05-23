@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class SparrowInteraction : MonoBehaviour
@@ -8,7 +7,6 @@ public class SparrowInteraction : MonoBehaviour
     // Script for the interactions with the sparrow (name, task, button)
 
     public GameObject sparrowText;
-    public TMP_Text sparrowLevel;
     public GameObject BuildButtonSparrow;
 
     public bool npcName = false;
@@ -18,7 +16,7 @@ public class SparrowInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("beeText"))
+        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Buzzard") && !GameObject.Find("Background") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText"))
         {
             sparrowText.SetActive(true);
         }
@@ -26,7 +24,7 @@ public class SparrowInteraction : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf") && GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("beeText"))
+        if (!GameObject.Find("Buzzard") && !GameObject.Find("Background") && GameObject.Find("sparrowText"))
         {
             if (menuOpen == 0 && Camera.main.fieldOfView == 80f) npcName = true;
 
@@ -38,7 +36,7 @@ public class SparrowInteraction : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (npcName == false)
+        if (npcName == false && !GameObject.Find("Buzzard"))
         {
             sparrowText.SetActive(false);
         }
@@ -51,17 +49,13 @@ public class SparrowInteraction : MonoBehaviour
 
         guiStyle.fontSize = 50;
 
-        if (!GameObject.Find("Background") && sparrowLevel.text != "Level 2")
+        if (!GameObject.Find("Background"))
         {
-            /*
             if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Buzzard"))
             {
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build!", guiStyle);
             }
-            else 
-            */
-
-            if (Camera.main.fieldOfView == 80f && npcName == false /* && !GameObject.Find("Buzzard") */)
+            else if (Camera.main.fieldOfView == 80f && npcName == false && !GameObject.Find("Buzzard"))
             {
                 guiStyle.fontSize = 75;
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
@@ -71,7 +65,7 @@ public class SparrowInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 80f /* && !GameObject.Find("Buzzard") */ && !GameObject.Find("Background"))
+        if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Buzzard") && !GameObject.Find("Background"))
         {
             BuildButtonSparrow.SetActive(true);
         }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class WormInteraction : MonoBehaviour
@@ -8,7 +7,6 @@ public class WormInteraction : MonoBehaviour
     // Script for the interactions with the worm (name, task, button)
 
     public GameObject wormText;
-    public TMP_Text wormLevel;
     public GameObject BuildButtonWorm;
 
     public bool npcName = false;
@@ -18,15 +16,15 @@ public class WormInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("beeText"))
+        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Frog") && !GameObject.Find("Background"))
         {
             wormText.SetActive(true);
         }
-    }   
+    }
 
     private void OnMouseDown()
     {
-        if (!GameObject.Find("Background") && GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("beeText"))
+        if (!GameObject.Find("Frog") && !GameObject.Find("Background"))
         {
             if (menuOpen == 0 && Camera.main.fieldOfView == 80f) npcName = true;
 
@@ -38,7 +36,7 @@ public class WormInteraction : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (npcName == false)
+        if (npcName == false && !GameObject.Find("Frog"))
         {
             wormText.SetActive(false);
         }
@@ -51,26 +49,23 @@ public class WormInteraction : MonoBehaviour
 
         guiStyle.fontSize = 50;
 
-        if (!GameObject.Find("Background") && wormLevel.text != "Level 4")
+        if (!GameObject.Find("Background"))
         {
-            /*
             if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Frog"))
             {
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "Build apple!", guiStyle);
             }
-            */
-
-            if (Camera.main.fieldOfView == 80f && npcName == false /* && !GameObject.Find("Frog") */)
+            else if (Camera.main.fieldOfView == 80f && npcName == false && !GameObject.Find("Frog"))
             {
                 guiStyle.fontSize = 75;
-                GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 150, textSize.x, textSize.y), "!", guiStyle);
+                GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
             }
         }
     }
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 80f /* && !GameObject.Find("Frog") */ && !GameObject.Find("Background"))
+        if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Frog") && !GameObject.Find("Background"))
         {
             BuildButtonWorm.SetActive(true);
         }
