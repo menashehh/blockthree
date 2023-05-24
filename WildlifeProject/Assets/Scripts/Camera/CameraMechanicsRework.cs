@@ -29,8 +29,8 @@ public class CameraMechanicsRework : MonoBehaviour
 
     private int cameraDragSpeed = 20;
 
-    float minFov = 80f;
-    float maxFov = 100f;
+    float minFov = 25f;
+    float maxFov = 80f;
     float sensitivity = 20f;
 
     private void Awake()
@@ -71,11 +71,6 @@ public class CameraMechanicsRework : MonoBehaviour
             // CAMERA ZOOM
             var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if ((wormCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("wormText")) && !GameObject.Find("Frog"))
-            {
-                return;
-            }
-
             if (GameObject.Find("Hex Button Worm"))
             {
                 return;
@@ -101,42 +96,47 @@ public class CameraMechanicsRework : MonoBehaviour
                 return;
             }
 
-            if ((frogCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("frogText")) && !GameObject.Find("Goose"))
+            if (/*(wormCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("wormText") && !GameObject.Find("Frog"))
             {
                 return;
             }
 
-            if ((gooseCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("gooseText")) && !GameObject.Find("Wolf"))
+            if (/*(frogCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("frogText") && !GameObject.Find("Goose"))
             {
                 return;
             }
 
-            if ((wolfCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("wolfText")) && !GameObject.Find("Bone"))
+            if (/*(gooseCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("gooseText") && !GameObject.Find("Wolf"))
             {
                 return;
             }
 
-            if ((sparrowCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("sparrowText")) && !GameObject.Find("Buzzard"))
+            if (/*(wolfCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("wolfText") && !GameObject.Find("Bone"))
             {
                 return;
             }
 
-            if ((buzzardCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("buzzardText")) && !GameObject.Find("Beaver"))
+            if (/*(sparrowCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("sparrowText") && !GameObject.Find("Buzzard"))
             {
                 return;
             }
 
-            if ((beaverCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("beaverText")) && !GameObject.Find("Beaver Station"))
+            if (/*(buzzardCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("buzzardText") && !GameObject.Find("Beaver"))
             {
                 return;
             }
 
-            if ((flyCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("flyText")) && !GameObject.Find("Fly Station"))
+            if (/*(beaverCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("beaverText") && !GameObject.Find("Beaver Station"))
             {
                 return;
             }
 
-            if ((beeCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("beeText")) && !GameObject.Find("Bee Station"))
+            if (/*(flyCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("flyText") && !GameObject.Find("Fly Station"))
+            {
+                return;
+            }
+
+            if (/*(beeCollider.bounds.IntersectRay(mouseRay) ||*/ GameObject.Find("beeText") && !GameObject.Find("Bee Station"))
             {
                 return;
             }

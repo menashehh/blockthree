@@ -11,7 +11,7 @@ public class FrogHex : MonoBehaviour
 
     private void Update()
     {
-        if (menuOpen == 1 && Camera.main.fieldOfView == 80f && !GameObject.Find("waterFrog"))
+        if (menuOpen == 1 && Camera.main.fieldOfView <= 60f && !GameObject.Find("waterFrog"))
         {
             HexButtonFrog.SetActive(true);
         }
@@ -27,7 +27,7 @@ public class FrogHex : MonoBehaviour
 
         if (!GameObject.Find("Background") && !GameObject.Find("waterFrog"))
         {
-            if (Camera.main.fieldOfView == 80f && menuOpen == 0)
+            if (Camera.main.fieldOfView <= 60f && menuOpen == 0)
             {
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 100, textSize.x, textSize.y), "!", guiStyle);
             }
@@ -38,13 +38,13 @@ public class FrogHex : MonoBehaviour
     {
         if (!GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("beeText"))
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView == 80f)
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 60f)
             {
                 menuOpen = 1;
                 return;
             }
 
-            if (menuOpen == 1 && Camera.main.fieldOfView == 80f)
+            if (menuOpen == 1 && Camera.main.fieldOfView <= 60f)
             {
                 menuOpen = 0;
                 return;
