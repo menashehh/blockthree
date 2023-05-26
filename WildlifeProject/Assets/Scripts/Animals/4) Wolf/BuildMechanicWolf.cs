@@ -12,6 +12,10 @@ public class BuildMechanicWolf : MonoBehaviour
 
     public GameObject bone;
     public GameObject wolfStation;
+    public GameObject wolfTree;
+    public GameObject WolfHex2;
+
+    public AudioSource Locked;
 
     public void BuildWolf()
     {
@@ -26,11 +30,22 @@ public class BuildMechanicWolf : MonoBehaviour
         if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !wolfStation.activeSelf && wolfLevel.text == "Level 1")
         {
             wolfStation.SetActive(true);
+            WolfHex2.SetActive(true);
 
             wolfLevel.text = "Level 2";
+            wolfRequirement.text = "Tree";
+
+            return;
+        }
+
+        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && wolfTree.activeSelf && wolfLevel.text == "Level 2")
+        {
+            wolfLevel.text = "Level 3";
             wolfRequirement.text = "Maximum Level Reached";
 
             return;
         }
+
+        Locked.Play();
     }
 }

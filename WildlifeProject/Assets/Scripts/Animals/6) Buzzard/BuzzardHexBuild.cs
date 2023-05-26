@@ -8,11 +8,14 @@ public class BuzzardHexBuild : MonoBehaviour
     public GameObject Lots;
 
     public Material SandMaterial;
+    public AudioSource Locked;
 
     public GameObject worm;
 
     public GameObject BuzzardReq;
+    public GameObject BuzzardGrass;
     public GameObject BuzzardHex;
+    public GameObject BuzzardHex2;
 
     public GameObject Apple;
     public GameObject Fly;
@@ -49,5 +52,18 @@ public class BuzzardHexBuild : MonoBehaviour
 
             return;
         }
+
+        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !BuzzardGrass.activeSelf)
+        {
+            BuzzardHex2.GetComponent<MeshRenderer>().material = SandMaterial;
+
+            BuzzardGrass.SetActive(true);
+
+            GameObject.Find("HexBuildBuzzard2").GetComponent<BuzzardHex2>().menuOpen = 0;
+
+            return;
+        }
+
+        Locked.Play();
     }
 }

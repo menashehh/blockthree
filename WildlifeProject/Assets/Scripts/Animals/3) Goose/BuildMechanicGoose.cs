@@ -7,6 +7,7 @@ public class BuildMechanicGoose : MonoBehaviour
 {
     LotCount lotScript;
     public GameObject Lots;
+    public AudioSource Locked;
 
     public TMP_Text gooseLevel;
     public TMP_Text gooseRequirement;
@@ -16,6 +17,8 @@ public class BuildMechanicGoose : MonoBehaviour
     public GameObject BeaverDam;
 
     public GameObject GooseStation;
+    public GameObject GooseWater;
+    public GameObject GooseHex;
 
     public GameObject wolf;
     public GameObject wolfPlot;
@@ -30,9 +33,10 @@ public class BuildMechanicGoose : MonoBehaviour
         if (worm.GetComponent<ResourceUpdate>().resources >= 0 && BeaverDam.activeSelf && gooseLevel.text == "Level 0")
         {
             GooseStation.SetActive(true);
+            GooseHex.SetActive(true);
 
             gooseLevel.text = "Level 1";
-            gooseRequirement.text = "Maximum Level Reached";
+            gooseRequirement.text = "Water";
 
             wolf.SetActive(true);
             wolfPlot.SetActive(true);
@@ -41,5 +45,15 @@ public class BuildMechanicGoose : MonoBehaviour
 
             return;
         }
+
+        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && GooseWater.activeSelf && gooseLevel.text == "Level 1")
+        {
+            gooseLevel.text = "Level 2";
+            gooseRequirement.text = "Maximum Level Reached";
+
+            return;
+        }
+
+        Locked.Play();
     }
 }

@@ -12,6 +12,10 @@ public class BuildMechanicFly : MonoBehaviour
 
     public GameObject FlyReq;
     public GameObject FlyStation;
+    public GameObject FlyGrass;
+    public GameObject FlyHex2;
+
+    public AudioSource Locked;
 
     public void BuildFly()
     {
@@ -26,11 +30,22 @@ public class BuildMechanicFly : MonoBehaviour
         if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !FlyStation.activeSelf && flyLevel.text == "Level 1")
         {
             FlyStation.SetActive(true);
+            FlyHex2.SetActive(true);
 
             flyLevel.text = "Level 2";
+            flyRequirement.text = "Grass";
+
+            return;
+        }
+
+        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && FlyGrass.activeSelf && flyLevel.text == "Level 2")
+        {
+            flyLevel.text = "Level 3";
             flyRequirement.text = "Maximum Level Reached";
 
             return;
         }
+
+        Locked.Play();
     }
 }

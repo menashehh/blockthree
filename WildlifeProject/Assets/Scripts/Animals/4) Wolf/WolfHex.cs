@@ -36,7 +36,16 @@ public class WolfHex : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameObject.Find("Background") && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText") && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("beeText"))
+        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background")
+            && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
+            && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
+            && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")
+            && !GameObject.Find("wolfText") && !GameObject.Find("Hex Button Wolf 2")
+            && !GameObject.Find("sparrowText") && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
+            && !GameObject.Find("buzzardText") && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
+            && !GameObject.Find("beaverText") && !GameObject.Find("Hex Button Beaver")
+            && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
+            && !GameObject.Find("beeText") && !GameObject.Find("Hex Button Bee"))
         {
             if (menuOpen == 0 && Camera.main.fieldOfView == 80f)
             {

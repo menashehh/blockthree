@@ -8,10 +8,14 @@ public class BuildMechanicBeaver : MonoBehaviour
     public TMP_Text beaverLevel;
     public TMP_Text beaverRequirement;
     public GameObject BeaverStation;
+    public GameObject BeaverTree;
+    public GameObject BeaverHex;
 
     public GameObject worm;
 
     public GameObject FrogWater;
+
+    public AudioSource Locked;
 
     public void BuildBeaver()
     {
@@ -26,9 +30,22 @@ public class BuildMechanicBeaver : MonoBehaviour
         if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !BeaverStation.activeSelf && beaverLevel.text == "Level 1")
         {
             BeaverStation.SetActive(true);
+            BeaverHex.SetActive(true);
 
             beaverLevel.text = "Level 2";
-            beaverRequirement.text = "Maximum Level Reached";
+            beaverRequirement.text = "Tree";
+
+            return;
         }
+
+        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && BeaverTree.activeSelf && beaverLevel.text == "Level 2")
+        {
+            beaverLevel.text = "Level 3";
+            beaverRequirement.text = "Maximum Level Reached";
+
+            return;
+        }
+
+        Locked.Play();
     }
 }
