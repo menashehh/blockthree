@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BuildMechanicBeaver : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public TMP_Text beaverLevel;
     public TMP_Text beaverRequirement;
     public GameObject BeaverStation;
@@ -16,30 +19,40 @@ public class BuildMechanicBeaver : MonoBehaviour
     public GameObject FrogWater;
 
     public AudioSource Locked;
+    public AudioSource MaximumLevel;
+
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
 
     public void BuildBeaver()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && FrogWater.activeSelf && beaverLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 0 && FrogWater.activeSelf && beaverLevel.text == "Level 0")
         {
             beaverLevel.text = "Level 1";
-            beaverRequirement.text = "0 resources to build idle station";
+            beaverRequirement.text = "30 Resources to build idle station";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !BeaverStation.activeSelf && beaverLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 30 && !BeaverStation.activeSelf && beaverLevel.text == "Level 1")
         {
+            resourceCountScript.resources -= 30;
+
             BeaverStation.SetActive(true);
             BeaverHex.SetActive(true);
 
-            beaverLevel.text = "Level 2";
+            beaverLevel.text = "Level 2";  
             beaverRequirement.text = "Tree";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && BeaverTree.activeSelf && beaverLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 0 && BeaverTree.activeSelf && beaverLevel.text == "Level 2")
         {
+            MaximumLevel.Play();
+
             beaverLevel.text = "Level 3";
             beaverRequirement.text = "Maximum Level Reached";
 

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BeaverHexBuild : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public Material DirtMaterial;
     public AudioSource Locked;
 
@@ -14,10 +17,17 @@ public class BeaverHexBuild : MonoBehaviour
     public GameObject BeaverTree;
     public GameObject BeaverHex;
 
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
     public void BuildHexBeaver()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !BeaverTree.activeSelf && beaverLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 90 && !BeaverTree.activeSelf && beaverLevel.text == "Level 2")
         {
+            resourceCountScript.resources -= 90;
+
             BeaverTree.SetActive(true);
 
             BeaverHex.GetComponent<MeshRenderer>().material = DirtMaterial;

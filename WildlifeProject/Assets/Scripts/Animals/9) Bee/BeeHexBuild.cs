@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BeeHexBuild : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public Material DirtMaterial;
     public AudioSource Locked;
 
@@ -14,10 +17,17 @@ public class BeeHexBuild : MonoBehaviour
     public GameObject BeeTree;
     public GameObject BeeHex;
 
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
     public void BuildHexBee()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !BeeTree.activeSelf && beeLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 30 && !BeeTree.activeSelf && beeLevel.text == "Level 1")
         {
+            resourceCountScript.resources -= 30;
+
             BeeTree.SetActive(true);
 
             BeeHex.GetComponent<MeshRenderer>().material = DirtMaterial;

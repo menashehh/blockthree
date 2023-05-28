@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class BuildMechanicSparrow : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     LotCount lotScript;
     public GameObject Lots;
     public AudioSource Locked;
+    public AudioSource AnimalUnlock;
+    public AudioSource MaximumLevel;
 
     public GameObject worm;
     public TMP_Text wormLevel;
@@ -27,17 +32,20 @@ public class BuildMechanicSparrow : MonoBehaviour
     private void Awake()
     {
         lotScript = Lots.GetComponent<LotCount>();
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
     }
 
     public void BuildSparrow()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !sparrowStation.activeSelf && (wormLevel.text == "Level 3" || wormLevel.text == "Level 4" || wormLevel.text == "Level 5" || wormLevel.text == "Level 6" || wormLevel.text == "Level 7"))
+        if (resourceCountScript.resources >= 0 && !sparrowStation.activeSelf && (wormLevel.text == "Level 3" || wormLevel.text == "Level 4" || wormLevel.text == "Level 5" || wormLevel.text == "Level 6" || wormLevel.text == "Level 7"))
         {
             sparrowStation.SetActive(true);
             SparrowHex.SetActive(true);
 
             buzzard.SetActive(true);
             buzzardPlot.SetActive(true);
+
+            AnimalUnlock.Play();
 
             lotScript.lotsCount += 1;
 
@@ -47,13 +55,13 @@ public class BuildMechanicSparrow : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && sparrowWater.activeSelf && sparrowLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 0 && sparrowWater.activeSelf && sparrowLevel.text == "Level 1")
         {
             sparrowLevel.text = "Level 2";
             sparrowRequirement.text = "Tree (buzzard)";
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && buzzardReq.activeSelf && sparrowLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 0 && buzzardReq.activeSelf && sparrowLevel.text == "Level 2")
         {
             SparrowHex2.SetActive(true);
 
@@ -63,8 +71,10 @@ public class BuildMechanicSparrow : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && sparrowGrass.activeSelf && sparrowLevel.text == "Level 3")
+        if (resourceCountScript.resources >= 0 && sparrowGrass.activeSelf && sparrowLevel.text == "Level 3")
         {
+            MaximumLevel.Play();
+
             sparrowLevel.text = "Level 4";
             sparrowRequirement.text = "Maximum Level Reached";
 

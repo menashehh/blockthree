@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class FlyHexBuild : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     LotCount lotScript;
     public GameObject Lots;
 
     public Material SandMaterial;
     public AudioSource Locked;
+    public AudioSource AnimalUnlock;
 
     public GameObject worm;
 
@@ -23,12 +27,15 @@ public class FlyHexBuild : MonoBehaviour
     private void Awake()
     {
         lotScript = Lots.GetComponent<LotCount>();
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
     }
 
     public void BuildHexFly()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !FlyReq.activeSelf)
+        if (resourceCountScript.resources >= 10 && !FlyReq.activeSelf)
         {
+            resourceCountScript.resources -= 10;
+
             FlyReq.SetActive(true);
 
             FlyHex.GetComponent<MeshRenderer>().material = SandMaterial;
@@ -40,14 +47,18 @@ public class FlyHexBuild : MonoBehaviour
                 Bee.SetActive(true);
                 BeeLot.SetActive(true);
 
+                AnimalUnlock.Play();
+
                 lotScript.lotsCount += 1;
             }
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !FlyGrass.activeSelf)
+        if (resourceCountScript.resources >= 90 && !FlyGrass.activeSelf)
         {
+            resourceCountScript.resources -= 90;
+
             FlyGrass.SetActive(true);
 
             FlyHex2.GetComponent<MeshRenderer>().material = SandMaterial;

@@ -16,9 +16,10 @@ public class ResourceUpdate2 : MonoBehaviour
         refScript = station.GetComponent<ResourceUpdate>();
     }
 
+    /*
     private void OnMouseDown()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background"))
+        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background"))
         {
             if (this.name == "Frog") refScript.AddResourceFrog();
 
@@ -37,4 +38,5 @@ public class ResourceUpdate2 : MonoBehaviour
             if (this.name == "Bee") refScript.AddResourceBee();
         }
     }
+    */
 }

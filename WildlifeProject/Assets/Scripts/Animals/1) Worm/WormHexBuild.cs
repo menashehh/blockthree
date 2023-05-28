@@ -7,9 +7,13 @@ public class WormHexBuild : MonoBehaviour
 {
     LotCount lotScript;
 
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public GameObject Lots;
     public Material DirtMaterial;
     public AudioSource Locked;
+    public AudioSource AnimalUnlock;
 
     public TMP_Text wormLevel;
     public GameObject worm;
@@ -30,11 +34,12 @@ public class WormHexBuild : MonoBehaviour
     private void Awake()
     {
         lotScript = Lots.GetComponent<LotCount>();
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
     }
 
     public void BuildHexWorm()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !apple.activeSelf && wormLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 0 && !apple.activeSelf && wormLevel.text == "Level 0")
         {
             apple.SetActive(true);
 
@@ -44,6 +49,8 @@ public class WormHexBuild : MonoBehaviour
 
             WormHex.GetComponent<MeshRenderer>().material = DirtMaterial;
 
+            AnimalUnlock.Play();
+
             lotScript.lotsCount += 1;
 
             GameObject.Find("HexBuildWorm").GetComponent<WormHex>().menuOpen = 0;
@@ -51,8 +58,10 @@ public class WormHexBuild : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !waterWorm.activeSelf && wormLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 30 && !waterWorm.activeSelf && wormLevel.text == "Level 2")
         {
+            resourceCountScript.resources -= 30;
+
             waterWorm.SetActive(true);
 
             WormHex2.GetComponent<MeshRenderer>().material = DirtMaterial;
@@ -62,8 +71,10 @@ public class WormHexBuild : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !treeWorm.activeSelf && wormLevel.text == "Level 4")
+        if (resourceCountScript.resources >= 270 && !treeWorm.activeSelf && wormLevel.text == "Level 4")
         {
+            resourceCountScript.resources -= 270;
+
             treeWorm.SetActive(true);
 
             WormHex3.GetComponent<MeshRenderer>().material = DirtMaterial;
@@ -73,8 +84,10 @@ public class WormHexBuild : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !grass2Worm.activeSelf && wormLevel.text == "Level 6")
+        if (resourceCountScript.resources >= 2430 && !grass2Worm.activeSelf && wormLevel.text == "Level 6")
         {
+            resourceCountScript.resources -= 2430;
+
             grass2Worm.SetActive(true);
 
             WormHex4.GetComponent<MeshRenderer>().material = DirtMaterial;

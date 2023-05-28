@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WormInteraction : MonoBehaviour
@@ -10,6 +11,10 @@ public class WormInteraction : MonoBehaviour
 
     Highlight HighlightScript;
 
+    public GameObject TaskTextPrefab;
+    private GameObject text;
+    public int prefabLimit = 0;
+
     public GameObject wormText;
     public TMP_Text wormLevel;
     public GameObject BuildButtonWorm;
@@ -17,7 +22,7 @@ public class WormInteraction : MonoBehaviour
     public bool npcName = false;
     public int menuOpen = 0;
 
-    private GUIStyle guiStyle = new GUIStyle();
+    // private GUIStyle guiStyle = new GUIStyle();
 
     private void Start()
     {
@@ -26,7 +31,7 @@ public class WormInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background")
+        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
             && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
             && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
             && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")
@@ -47,11 +52,11 @@ public class WormInteraction : MonoBehaviour
     {
         if (!GameObject.Find("Background") && GameObject.Find("wormText"))
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView == 80f) npcName = true;
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f) npcName = true;
 
-            if (menuOpen == 1 && Camera.main.fieldOfView == 80f) npcName = false;
+            if (menuOpen == 1 && Camera.main.fieldOfView <= 80f) npcName = false;
 
-            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView == 80f) menuOpen++;
+            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView <= 80f) menuOpen++;
 
             HighlightScript.ToggleHighlight(false);
         }
@@ -66,6 +71,7 @@ public class WormInteraction : MonoBehaviour
         }
     }
 
+    /*
     private void OnGUI()
     {
         var position = Camera.main.WorldToScreenPoint(this.transform.position);
@@ -75,20 +81,35 @@ public class WormInteraction : MonoBehaviour
 
         if (!GameObject.Find("Background") && wormLevel.text != "Level 7")
         {
-            if (Camera.main.fieldOfView == 80f && npcName == false)
+            if (Camera.main.fieldOfView <= 80f && npcName == false)
             {
                 guiStyle.fontSize = 75;
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 150, textSize.x, textSize.y), "!", guiStyle);
             }
         }
     }
+    */
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Background"))
+        if (npcName == true && Camera.main.fieldOfView <= 80f && !GameObject.Find("Background"))
         {
             BuildButtonWorm.SetActive(true);
         }
         else BuildButtonWorm.SetActive(false);
+
+        if (!GameObject.Find("Background") && wormLevel.text != "Level 7" && Camera.main.fieldOfView <= 80f && npcName == false)
+        {
+            if (prefabLimit != 1)
+            {
+                text = Instantiate(TaskTextPrefab, GameObject.Find("Worm").transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+                prefabLimit++;
+            }
+        }
+        else
+        {
+            Destroy(text);
+            prefabLimit = 0;
+        }
     }
 }

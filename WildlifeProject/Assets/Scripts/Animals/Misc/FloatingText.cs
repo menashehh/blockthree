@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatingText : MonoBehaviour
 {
-    public float DestroyTime = 0.2f;
+    public float DestroyTime = 0.5f; // CHANGE IN INSPECTOR
 
     void Start()
     {

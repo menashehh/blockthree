@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FrogHexBuild : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public Material DirtMaterial;
     public AudioSource Locked;
 
@@ -16,10 +19,17 @@ public class FrogHexBuild : MonoBehaviour
     public GameObject FrogHex2;
     public GameObject FrogHex3;
 
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
     public void BuildHexFrog()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !FrogWater.activeSelf)
+        if (resourceCountScript.resources >= 10 && !FrogWater.activeSelf)
         {
+            resourceCountScript.resources -= 10;
+
             FrogWater.SetActive(true);
 
             FrogHex.GetComponent<MeshRenderer>().material = DirtMaterial;
@@ -29,8 +39,10 @@ public class FrogHexBuild : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !FrogTree.activeSelf)
+        if (resourceCountScript.resources >= 90 && !FrogTree.activeSelf)
         {
+            resourceCountScript.resources -= 90;
+
             FrogTree.SetActive(true);
 
             FrogHex2.GetComponent<MeshRenderer>().material = DirtMaterial;
@@ -40,8 +52,10 @@ public class FrogHexBuild : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !FrogGrass.activeSelf)
+        if (resourceCountScript.resources >= 810 && !FrogGrass.activeSelf)
         {
+            resourceCountScript.resources -= 810;
+
             FrogGrass.SetActive(true);
 
             FrogHex3.GetComponent<MeshRenderer>().material = DirtMaterial;

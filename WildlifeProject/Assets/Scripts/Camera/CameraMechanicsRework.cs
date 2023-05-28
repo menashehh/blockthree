@@ -30,7 +30,7 @@ public class CameraMechanicsRework : MonoBehaviour
 
     private int cameraDragSpeed = 20;
 
-    float minFov = 80f;
+    float minFov = 60f;
     float maxFov = 100f;
     float sensitivity = 20f;
 

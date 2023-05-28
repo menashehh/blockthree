@@ -84,7 +84,7 @@ public class ResourceUpdateMouse : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background"))
+        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background"))
         {
             if (this.name == "Apple Tree") refScript.AddResourceAppleTree();
 

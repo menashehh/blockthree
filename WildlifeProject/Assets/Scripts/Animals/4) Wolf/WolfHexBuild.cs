@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WolfHexBuild : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public Material SandMaterial;
     public AudioSource Locked;
 
@@ -15,10 +18,17 @@ public class WolfHexBuild : MonoBehaviour
     public GameObject WolfHex;
     public GameObject WolfHex2;
 
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
     public void BuildHexWolf()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !bone.activeSelf)
+        if (resourceCountScript.resources >= 10 && !bone.activeSelf)
         {
+            resourceCountScript.resources -= 10;
+
             bone.SetActive(true);
 
             WolfHex.GetComponent<MeshRenderer>().material = SandMaterial;
@@ -28,8 +38,10 @@ public class WolfHexBuild : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !wolfTree.activeSelf)
+        if (resourceCountScript.resources >= 90 && !wolfTree.activeSelf)
         {
+            resourceCountScript.resources -= 90;
+
             wolfTree.SetActive(true);
 
             WolfHex2.GetComponent<MeshRenderer>().material = SandMaterial;

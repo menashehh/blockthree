@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class BuildMechanicFrog : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     LotCount lotScript;
     public GameObject Lots;
     public AudioSource Locked;
+    public AudioSource AnimalUnlock;
+    public AudioSource MaximumLevel;
 
     public GameObject worm;
 
@@ -32,49 +37,59 @@ public class BuildMechanicFrog : MonoBehaviour
     private void Awake()
     {
         lotScript = Lots.GetComponent<LotCount>();
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
     }
 
     public void BuildFrog()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && FrogWater.activeSelf && frogLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 0 && FrogWater.activeSelf && frogLevel.text == "Level 0")
         {
             frogLevel.text = "Level 1";
-            frogRequirement.text = "0 resources to build idle station";
+            frogRequirement.text = "30 Resources to build idle station";
             
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !frogStation.activeSelf && frogLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 30 && !frogStation.activeSelf && frogLevel.text == "Level 1")
         {
+            resourceCountScript.resources -= 30;
+
             frogStation.SetActive(true);
             goose.SetActive(true);
             goosePlot.SetActive(true);
 
             FrogHex2.SetActive(true);
 
+            AnimalUnlock.Play();
+
             lotScript.lotsCount += 1;
+
             frogLevel.text = "Level 2";
             frogRequirement.text = "Tree";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && FrogTree.activeSelf && frogLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 0 && FrogTree.activeSelf && frogLevel.text == "Level 2")
         {
             frogLevel.text = "Level 3";
-            frogRequirement.text = "Water Lilies + apple";
+            frogRequirement.text = "Water Lilies + apple + 270 Resources";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && AppleFly.activeSelf && !waterlilies.activeSelf && frogLevel.text == "Level 3")
+        if (resourceCountScript.resources >= 270 && AppleFly.activeSelf && !waterlilies.activeSelf && frogLevel.text == "Level 3")
         {
+            resourceCountScript.resources -= 270;
+
             waterlilies.SetActive(true);
 
             if (!Bee.activeSelf)
             {
                 Bee.SetActive(true);
                 BeeLot.SetActive(true);
+
+                AnimalUnlock.Play();
 
                 lotScript.lotsCount += 1;
             }
@@ -87,8 +102,10 @@ public class BuildMechanicFrog : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && FrogGrass.activeSelf && frogLevel.text == "Level 4")
+        if (resourceCountScript.resources >= 0 && FrogGrass.activeSelf && frogLevel.text == "Level 4")
         {
+            MaximumLevel.Play();
+
             frogLevel.text = "Level 5";
             frogRequirement.text = "Maximum Level Reached";
 

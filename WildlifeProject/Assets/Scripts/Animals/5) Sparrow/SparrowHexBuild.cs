@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class SparrowHexBuild : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public Material DirtMaterial;
     public AudioSource Locked;
 
@@ -16,10 +19,17 @@ public class SparrowHexBuild : MonoBehaviour
     public GameObject SparrowHex;
     public GameObject SparrowHex2;
 
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
     public void BuildHexSparrow()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !SparrowWater.activeSelf)
+        if (resourceCountScript.resources >= 30 && !SparrowWater.activeSelf)
         {
+            resourceCountScript.resources -= 30;
+
             SparrowWater.SetActive(true);
 
             SparrowHex.GetComponent<MeshRenderer>().material = DirtMaterial;
@@ -29,8 +39,10 @@ public class SparrowHexBuild : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !SparrowGrass.activeSelf)
+        if (resourceCountScript.resources >= 90 && !SparrowGrass.activeSelf)
         {
+            resourceCountScript.resources -= 90;
+
             SparrowGrass.SetActive(true);
 
             SparrowHex2.GetComponent<MeshRenderer>().material = DirtMaterial;

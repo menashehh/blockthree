@@ -9,6 +9,10 @@ public class BeaverInteraction : MonoBehaviour
 
     Highlight HighlightScript;
 
+    public GameObject TaskTextPrefab;
+    private GameObject text;
+    public int prefabLimit = 0;
+
     public GameObject beaverText;
     public TMP_Text beaverLevel;
     public GameObject BuildButtonBeaver;
@@ -16,7 +20,7 @@ public class BeaverInteraction : MonoBehaviour
     public bool npcName = false;
     public int menuOpen = 0;
 
-    private GUIStyle guiStyle = new GUIStyle();
+    // private GUIStyle guiStyle = new GUIStyle();
 
     private void Start()
     {
@@ -25,7 +29,7 @@ public class BeaverInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background")
+        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
             && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
             && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
             && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")
@@ -46,11 +50,11 @@ public class BeaverInteraction : MonoBehaviour
     {
         if (!GameObject.Find("Background") && GameObject.Find("beaverText"))
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView == 80f) npcName = true;
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f) npcName = true;
 
-            if (menuOpen == 1 && Camera.main.fieldOfView == 80f) npcName = false;
+            if (menuOpen == 1 && Camera.main.fieldOfView <= 80f) npcName = false;
 
-            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView == 80f) menuOpen++;
+            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView <= 80f) menuOpen++;
 
             HighlightScript.ToggleHighlight(false);
         }
@@ -65,6 +69,7 @@ public class BeaverInteraction : MonoBehaviour
         }
     }
 
+    /*
     private void OnGUI()
     {
         var position = Camera.main.WorldToScreenPoint(this.transform.position);
@@ -74,20 +79,35 @@ public class BeaverInteraction : MonoBehaviour
 
         if (!GameObject.Find("Background") && beaverLevel.text != "Level 3")
         {
-            if (Camera.main.fieldOfView == 80f && npcName == false)
+            if (Camera.main.fieldOfView <= 80f && npcName == false)
             {
                 guiStyle.fontSize = 75;
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
             }
         }
     }
+    */
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView == 80f && !GameObject.Find("Background"))
+        if (npcName == true && Camera.main.fieldOfView <= 80f && !GameObject.Find("Background"))
         {
             BuildButtonBeaver.SetActive(true);
         }
         else BuildButtonBeaver.SetActive(false);
+
+        if (!GameObject.Find("Background") && beaverLevel.text != "Level 3" && Camera.main.fieldOfView <= 80f && npcName == false)
+        {
+            if (prefabLimit != 1)
+            {
+                text = Instantiate(TaskTextPrefab, GameObject.Find("Beaver").transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+                prefabLimit++;
+            }
+        }
+        else
+        {
+            Destroy(text);
+            prefabLimit = 0;
+        }
     }
 }

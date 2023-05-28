@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GooseHexBuild : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public Material DirtMaterial;
     public AudioSource Locked;
 
@@ -14,10 +17,17 @@ public class GooseHexBuild : MonoBehaviour
     public GameObject GooseWater;
     public GameObject GooseHex;
 
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
     public void BuildHexGoose()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !GooseWater.activeSelf && gooseLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 30 && !GooseWater.activeSelf && gooseLevel.text == "Level 1")
         {
+            resourceCountScript.resources -= 30;
+
             GooseWater.SetActive(true);
 
             GooseHex.GetComponent<MeshRenderer>().material = DirtMaterial;

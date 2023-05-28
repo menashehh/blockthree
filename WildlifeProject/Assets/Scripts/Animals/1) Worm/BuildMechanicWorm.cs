@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class BuildMechanicWorm : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     LotCount lotScript;
     public GameObject Lots;
     public AudioSource Locked;
+    public AudioSource AnimalUnlock;
+    public AudioSource MaximumLevel;
 
     public TMP_Text wormLevel;
     public TMP_Text wormRequirement;
@@ -35,25 +40,28 @@ public class BuildMechanicWorm : MonoBehaviour
     private void Awake()
     {
         lotScript = Lots.GetComponent<LotCount>();
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
     }
 
     public void BuildWorm()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && apple.activeSelf && wormLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 0 && apple.activeSelf && wormLevel.text == "Level 0")
         {
             wormLevel.text = "Level 1";
-            wormRequirement.text = "0 resources to build idle station";
+            wormRequirement.text = "Build idle station (Free)";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !appleTreeStation.activeSelf && wormLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 0 && !appleTreeStation.activeSelf && wormLevel.text == "Level 1")
         {
             appleTreeStation.SetActive(true);
             sparrow.SetActive(true);
             sparrowPlot.SetActive(true);
 
             wormHex2.SetActive(true);
+
+            AnimalUnlock.Play();
 
             lotScript.lotsCount += 1;
             wormLevel.text = "Level 2";
@@ -62,38 +70,44 @@ public class BuildMechanicWorm : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && waterWorm.activeSelf && wormLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 0 && waterWorm.activeSelf && wormLevel.text == "Level 2")
         {
             wormLevel.text = "Level 3";
-            wormRequirement.text = "Water (Frog)";
+            wormRequirement.text = "Water (Frog) + 90 Resources";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && FrogWater.activeSelf && wormLevel.text == "Level 3")
+        if (resourceCountScript.resources >= 90 && FrogWater.activeSelf && wormLevel.text == "Level 3")
         {
+            resourceCountScript.resources -= 90;
+
             wormLevel.text = "Level 4";
             wormRequirement.text = "Tree";
 
             wormHex3.SetActive(true);
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && treeWorm.activeSelf && wormLevel.text == "Level 4")
+        if (resourceCountScript.resources >= 0 && treeWorm.activeSelf && wormLevel.text == "Level 4")
         {
             wormLevel.text = "Level 5";
-            wormRequirement.text = "Buttercup + apple";
+            wormRequirement.text = "Buttercup + apple + 810 Resources";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && AppleFly.activeSelf && !buttercup.activeSelf && wormLevel.text == "Level 5")
+        if (resourceCountScript.resources >= 810 && AppleFly.activeSelf && !buttercup.activeSelf && wormLevel.text == "Level 5")
         {
+            resourceCountScript.resources -= 810;
+
             buttercup.SetActive(true);
 
             if (!Bee.activeSelf)
             {
                 Bee.SetActive(true);
                 BeeLot.SetActive(true);
+
+                AnimalUnlock.Play();
 
                 lotScript.lotsCount += 1;
             }
@@ -106,8 +120,10 @@ public class BuildMechanicWorm : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && grass2Worm.activeSelf && wormLevel.text == "Level 6")
+        if (resourceCountScript.resources >= 0 && grass2Worm.activeSelf && wormLevel.text == "Level 6")
         {
+            MaximumLevel.Play();
+
             wormLevel.text = "Level 7";
             wormRequirement.text = "Maximum Level Reached";
 

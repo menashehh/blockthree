@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BuildMechanicWolf : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public TMP_Text wolfLevel;
     public TMP_Text wolfRequirement;
 
@@ -16,19 +19,27 @@ public class BuildMechanicWolf : MonoBehaviour
     public GameObject WolfHex2;
 
     public AudioSource Locked;
+    public AudioSource MaximumLevel;
+
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
 
     public void BuildWolf()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && bone.activeSelf && wolfLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 0 && bone.activeSelf && wolfLevel.text == "Level 0")
         {
             wolfLevel.text = "Level 1";
-            wolfRequirement.text = "0 resources to build idle station";
+            wolfRequirement.text = "30 Resources to build idle station";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !wolfStation.activeSelf && wolfLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 30 && !wolfStation.activeSelf && wolfLevel.text == "Level 1")
         {
+            resourceCountScript.resources -= 30;
+
             wolfStation.SetActive(true);
             WolfHex2.SetActive(true);
 
@@ -38,8 +49,10 @@ public class BuildMechanicWolf : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && wolfTree.activeSelf && wolfLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 0 && wolfTree.activeSelf && wolfLevel.text == "Level 2")
         {
+            MaximumLevel.Play();
+
             wolfLevel.text = "Level 3";
             wolfRequirement.text = "Maximum Level Reached";
 

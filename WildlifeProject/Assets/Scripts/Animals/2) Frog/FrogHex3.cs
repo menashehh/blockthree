@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class FrogHex3 : MonoBehaviour
 {
+    public GameObject TaskTextPrefab;
+    private GameObject text;
+    public int prefabLimit = 0;
+
     public GameObject HexButtonFrog3;
-    private GUIStyle guiStyle = new GUIStyle();
+    // private GUIStyle guiStyle = new GUIStyle();
 
     public int menuOpen = 0;
 
     private void Update()
     {
-        if (menuOpen == 1 && Camera.main.fieldOfView == 80f && !GameObject.Find("Grass Frog"))
+        if (menuOpen == 1 && Camera.main.fieldOfView <= 80f && !GameObject.Find("Grass Frog"))
         {
             HexButtonFrog3.SetActive(true);
         }
         else HexButtonFrog3.SetActive(false);
+
+        if (!GameObject.Find("Background") && !GameObject.Find("Grass Frog") && Camera.main.fieldOfView <= 80f && menuOpen == 0)
+        {
+            if (prefabLimit != 1)
+            {
+                text = Instantiate(TaskTextPrefab, GameObject.Find("HexBuildFrog3").transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+                prefabLimit++;
+            }
+        }
+        else
+        {
+            Destroy(text);
+            prefabLimit = 0;
+        }
     }
 
+    /*
     private void OnGUI()
     {
         var position = Camera.main.WorldToScreenPoint(this.transform.position);
@@ -27,16 +46,17 @@ public class FrogHex3 : MonoBehaviour
 
         if (!GameObject.Find("Background") && !GameObject.Find("Grass Frog"))
         {
-            if (Camera.main.fieldOfView == 80f && menuOpen == 0)
+            if (Camera.main.fieldOfView <= 80f && menuOpen == 0)
             {
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 100, textSize.x, textSize.y), "!", guiStyle);
             }
         }
     }
+    */
 
     private void OnMouseDown()
     {
-        if (Camera.main.fieldOfView == 80f && !GameObject.Find("Background")
+        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
             && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
             && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2")
             && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")
@@ -47,13 +67,13 @@ public class FrogHex3 : MonoBehaviour
             && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
             && !GameObject.Find("beeText") && !GameObject.Find("Hex Button Bee"))
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView == 80f)
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f)
             {
                 menuOpen = 1;
                 return;
             }
 
-            if (menuOpen == 1 && Camera.main.fieldOfView == 80f)
+            if (menuOpen == 1 && Camera.main.fieldOfView <= 80f)
             {
                 menuOpen = 0;
                 return;

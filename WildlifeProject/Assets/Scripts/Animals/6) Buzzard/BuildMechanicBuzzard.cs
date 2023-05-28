@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BuildMechanicBuzzard : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     public GameObject worm;
 
     public TMP_Text buzzardLevel;
@@ -15,19 +18,27 @@ public class BuildMechanicBuzzard : MonoBehaviour
     public GameObject BuzzardHex2;
 
     public AudioSource Locked;
+    public AudioSource MaximumLevel;
+
+    private void Awake()
+    {
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
 
     public void BuildBuzzard()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && BuzzardReq.activeSelf && buzzardLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 0 && BuzzardReq.activeSelf && buzzardLevel.text == "Level 0")
         {
             buzzardLevel.text = "Level 1";
-            buzzardRequirement.text = "0 resources to build idle station";
+            buzzardRequirement.text = "30 Resources to build idle station";
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !buzzardStation.activeSelf && buzzardLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 30 && !buzzardStation.activeSelf && buzzardLevel.text == "Level 1")
         {
+            resourceCountScript.resources -= 30;
+
             buzzardStation.SetActive(true);
             BuzzardHex2.SetActive(true);
 
@@ -37,8 +48,10 @@ public class BuildMechanicBuzzard : MonoBehaviour
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && BuzzardGrass.activeSelf && buzzardLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 0 && BuzzardGrass.activeSelf && buzzardLevel.text == "Level 2")
         {
+            MaximumLevel.Play();
+
             buzzardLevel.text = "Level 3";
             buzzardRequirement.text = "Maximum Level Reached";
 

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BuzzardHexBuild : MonoBehaviour
 {
+    ResourceCount resourceCountScript;
+    public GameObject resourceCountObject;
+
     LotCount lotScript;
     public GameObject Lots;
 
     public Material SandMaterial;
     public AudioSource Locked;
+    public AudioSource AnimalUnlock;
 
     public GameObject worm;
 
@@ -28,12 +32,15 @@ public class BuzzardHexBuild : MonoBehaviour
     private void Awake()
     {
         lotScript = Lots.GetComponent<LotCount>();
+        resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
     }
 
     public void BuildHexBuzzard()
     {
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !BuzzardReq.activeSelf)
+        if (resourceCountScript.resources >= 10 && !BuzzardReq.activeSelf)
         {
+            resourceCountScript.resources -= 10;
+
             BuzzardHex.GetComponent<MeshRenderer>().material = SandMaterial;
 
             BuzzardReq.SetActive(true);
@@ -48,13 +55,17 @@ public class BuzzardHexBuild : MonoBehaviour
             Beaver.SetActive(true);
             BeaverLot.SetActive(true);
 
+            AnimalUnlock.Play();
+
             lotScript.lotsCount += 2;
 
             return;
         }
 
-        if (worm.GetComponent<ResourceUpdate>().resources >= 0 && !BuzzardGrass.activeSelf)
+        if (resourceCountScript.resources >= 90 && !BuzzardGrass.activeSelf)
         {
+            resourceCountScript.resources -= 90;
+
             BuzzardHex2.GetComponent<MeshRenderer>().material = SandMaterial;
 
             BuzzardGrass.SetActive(true);
