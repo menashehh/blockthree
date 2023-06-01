@@ -16,6 +16,7 @@ public class BuildMechanicWolf : MonoBehaviour
     public GameObject bone;
     public GameObject wolfStation;
     public GameObject wolfTree;
+    public GameObject WolfHex;                                      
     public GameObject WolfHex2;
 
     public AudioSource Locked;
@@ -24,6 +25,14 @@ public class BuildMechanicWolf : MonoBehaviour
     private void Awake()
     {
         resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
+    private void Update()
+    {
+        if (!bone.activeSelf && wolfLevel.text == "Level 0")
+        {
+            WolfHex.SetActive(true);
+        }
     }
 
     public void BuildWolf()

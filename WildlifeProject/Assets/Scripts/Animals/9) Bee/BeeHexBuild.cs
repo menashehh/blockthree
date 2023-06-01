@@ -30,9 +30,9 @@ public class BeeHexBuild : MonoBehaviour
 
             BeeTree.SetActive(true);
 
-            BeeHex.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildBee").SetActive(false);
 
-            GameObject.Find("HexBuildBee").GetComponent<BeeHex>().menuOpen = 0;
+            GameObject.Find("Hex Button Bee").SetActive(false);
 
             return;
         }

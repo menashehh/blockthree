@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 public class WormHex : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class WormHex : MonoBehaviour
             HexButtonWorm.SetActive(true);
         }
         else HexButtonWorm.SetActive(false);
+
+        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons")) menuOpen = 0;
 
         if (!GameObject.Find("Background") && !GameObject.Find("Apple") && Camera.main.fieldOfView <= 80f && menuOpen == 0)
         {
@@ -55,9 +59,9 @@ public class WormHex : MonoBehaviour
     }
     */
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
-        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
+        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background") && !EventSystem.current.IsPointerOverGameObject()
             && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
             && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
             && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")

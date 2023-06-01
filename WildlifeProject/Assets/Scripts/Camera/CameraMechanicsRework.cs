@@ -97,51 +97,52 @@ public class CameraMechanicsRework : MonoBehaviour
             // CAMERA ZOOM
             var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (GameObject.Find("Hex Button Worm") || GameObject.Find("Hex Button Worm 2") || GameObject.Find("Hex Button Worm 3") || GameObject.Find("Hex Button Worm 4"))
+            if (GameObject.Find("Build Button Worm") || GameObject.Find("Hex Button Worm") || GameObject.Find("Hex Button Worm 2") || GameObject.Find("Hex Button Worm 3") || GameObject.Find("Hex Button Worm 4"))
             {
                 return;
             }
 
-            if (GameObject.Find("Hex Button Frog") || GameObject.Find("Hex Button Frog 2") || GameObject.Find("Hex Button Frog 3"))
+            if (GameObject.Find("Build Button Frog") || GameObject.Find("Hex Button Frog") || GameObject.Find("Hex Button Frog 2") || GameObject.Find("Hex Button Frog 3"))
             {
                 return;
             }
 
-            if (GameObject.Find("Hex Button Sparrow") || GameObject.Find("Hex Button Sparrow 2"))
+            if (GameObject.Find("Build Button Sparrow") || GameObject.Find("Hex Button Sparrow") || GameObject.Find("Hex Button Sparrow 2"))
             {
                 return;
             }
 
-            if (GameObject.Find("Hex Button Buzzard") || GameObject.Find("Hex Button Buzzard 2"))
+            if (GameObject.Find("Build Button Buzzard") || GameObject.Find("Hex Button Buzzard") || GameObject.Find("Hex Button Buzzard 2"))
             {
                 return;
             }
 
-            if (GameObject.Find("Hex Button Wolf") || GameObject.Find("Hex Button Wolf 2"))
+            if (GameObject.Find("Build Button Wolf") || GameObject.Find("Hex Button Wolf") || GameObject.Find("Hex Button Wolf 2"))
             {
                 return;
             }
 
-            if (GameObject.Find("Hex Button Fly") || GameObject.Find("Hex Button Fly 2"))
+            if (GameObject.Find("Build Button Fly") || GameObject.Find("Hex Button Fly") || GameObject.Find("Hex Button Fly 2"))
             {
                 return;
             }
 
-            if (GameObject.Find("Hex Button Goose"))
+            if (GameObject.Find("Build Button Goose") || GameObject.Find("Hex Button Goose"))
             {
                 return;
             }
 
-            if (GameObject.Find("Hex Button Beaver"))
+            if (GameObject.Find("Build Button Beaver") || GameObject.Find("Hex Button Beaver"))
             {
                 return;
             }
 
-            if (GameObject.Find("Hex Button Bee"))
+            if (GameObject.Find("Build Button Bee") || GameObject.Find("Hex Button Bee"))
             {
                 return;
             }
 
+            /*
             if (wormCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("wormText"))
             {
                 return;
@@ -186,6 +187,7 @@ public class CameraMechanicsRework : MonoBehaviour
             {
                 return;
             }
+            */
 
             CameraZoom(); // PC
 

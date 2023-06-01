@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Resources;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WormIdleStation : MonoBehaviour
 {
+    Highlight HighlightScript;
+
     ResourceCount resourceCountScript;
     public GameObject resourceCountObject;
 
@@ -18,13 +21,24 @@ public class WormIdleStation : MonoBehaviour
     private void Awake()
     {
         resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+        HighlightScript = GetComponent<Highlight>();
     }
 
     // TAP INCOME
 
-    private void OnMouseDown()
+    private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background"))
+        if (Camera.main.fieldOfView <= 80f && GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && !EventSystem.current.IsPointerOverGameObject()) HighlightScript.ToggleHighlight(true);
+    }
+
+    private void OnMouseExit()
+    {
+        HighlightScript.ToggleHighlight(false);
+    }
+
+    private void OnMouseUp()
+    {
+        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background") && !EventSystem.current.IsPointerOverGameObject())
         {
             if (wormLevel.text == "Level 2")
             {

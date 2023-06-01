@@ -15,6 +15,7 @@ public class BuildMechanicBuzzard : MonoBehaviour
     public GameObject buzzardStation;
     public GameObject BuzzardReq;
     public GameObject BuzzardGrass;
+    public GameObject BuzzardHex;
     public GameObject BuzzardHex2;
 
     public AudioSource Locked;
@@ -23,6 +24,14 @@ public class BuildMechanicBuzzard : MonoBehaviour
     private void Awake()
     {
         resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
+    private void Update()
+    {
+        if (!BuzzardReq.activeSelf && buzzardLevel.text == "Level 0")
+        {
+            BuzzardHex.SetActive(true);
+        }
     }
 
     public void BuildBuzzard()

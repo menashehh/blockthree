@@ -6,7 +6,7 @@ using UnityEngine;
 public class ResourceCount : MonoBehaviour
 {
     public TMP_Text resourceText;
-    public float resources;
+    public float resources; // CHANGE FROM INSPECTOR
 
     private void Update()
     {

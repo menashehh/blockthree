@@ -30,9 +30,9 @@ public class BeaverHexBuild : MonoBehaviour
 
             BeaverTree.SetActive(true);
 
-            BeaverHex.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildBeaver").SetActive(false);
 
-            GameObject.Find("HexBuildBeaver").GetComponent<BeaverHex>().menuOpen = 0;
+            GameObject.Find("Hex Button Beaver").SetActive(false);
 
             return;
         }

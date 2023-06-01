@@ -31,9 +31,9 @@ public class WolfHexBuild : MonoBehaviour
 
             bone.SetActive(true);
 
-            WolfHex.GetComponent<MeshRenderer>().material = SandMaterial;
-
-            GameObject.Find("HexBuildWolf").GetComponent<WolfHex>().menuOpen = 0;
+            GameObject.Find("HexBuildWolf").SetActive(false);
+                            
+            GameObject.Find("Hex Button Wolf").SetActive(false);
 
             return;
         }
@@ -44,9 +44,9 @@ public class WolfHexBuild : MonoBehaviour
 
             wolfTree.SetActive(true);
 
-            WolfHex2.GetComponent<MeshRenderer>().material = SandMaterial;
+            GameObject.Find("HexBuildWolf2").SetActive(false);
 
-            GameObject.Find("HexBuildWolf2").GetComponent<WolfHex2>().menuOpen = 0;
+            GameObject.Find("Hex Button Wolf 2").SetActive(false);
 
             return;
         }

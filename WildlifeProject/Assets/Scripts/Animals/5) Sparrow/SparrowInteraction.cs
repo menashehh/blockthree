@@ -1,13 +1,16 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SparrowInteraction : MonoBehaviour
 {
     // Script for the interactions with the sparrow (name, task, button)
 
     Highlight HighlightScript;
+
+    public AudioSource sparrowSFX;
 
     public GameObject TaskTextPrefab;
     private GameObject text;
@@ -29,7 +32,7 @@ public class SparrowInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
+        if (GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
             && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
             && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
             && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")
@@ -46,11 +49,15 @@ public class SparrowInteraction : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
-        if (!GameObject.Find("Background") && GameObject.Find("sparrowText"))
+        if (!GameObject.Find("Background") && GameObject.Find("sparrowText") && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f) npcName = true;
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f)
+            {
+                npcName = true;
+                sparrowSFX.Play();
+            }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 80f) npcName = false;
 
@@ -95,6 +102,14 @@ public class SparrowInteraction : MonoBehaviour
             BuildButtonSparrow.SetActive(true);
         }
         else BuildButtonSparrow.SetActive(false);
+
+        if (!GameObject.Find("Background") && GameObject.Find("sparrowText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
+        {
+            sparrowText.SetActive(false);
+            npcName = false;
+            menuOpen = 0;
+        }
 
         if (!GameObject.Find("Background") && sparrowLevel.text != "Level 4" && Camera.main.fieldOfView <= 80f && npcName == false)
         {

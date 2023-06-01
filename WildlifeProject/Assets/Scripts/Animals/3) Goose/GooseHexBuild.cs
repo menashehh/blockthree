@@ -30,9 +30,9 @@ public class GooseHexBuild : MonoBehaviour
 
             GooseWater.SetActive(true);
 
-            GooseHex.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildGoose").SetActive(false);
 
-            GameObject.Find("HexBuildGoose").GetComponent<GooseHex>().menuOpen = 0;
+            GameObject.Find("Hex Button Goose").SetActive(false);
 
             return;
         }

@@ -41,11 +41,11 @@ public class BuzzardHexBuild : MonoBehaviour
         {
             resourceCountScript.resources -= 10;
 
-            BuzzardHex.GetComponent<MeshRenderer>().material = SandMaterial;
-
             BuzzardReq.SetActive(true);
 
-            GameObject.Find("HexBuildBuzzard").GetComponent<BuzzardHex>().menuOpen = 0;
+            GameObject.Find("HexBuildBuzzard").SetActive(false);
+
+            GameObject.Find("Hex Button Buzzard").SetActive(false);
 
             Apple.SetActive(true);
             Fly.SetActive(true);
@@ -66,11 +66,11 @@ public class BuzzardHexBuild : MonoBehaviour
         {
             resourceCountScript.resources -= 90;
 
-            BuzzardHex2.GetComponent<MeshRenderer>().material = SandMaterial;
-
             BuzzardGrass.SetActive(true);
 
-            GameObject.Find("HexBuildBuzzard2").GetComponent<BuzzardHex2>().menuOpen = 0;
+            GameObject.Find("HexBuildBuzzard2").SetActive(false);
+
+            GameObject.Find("Hex Button Buzzard 2").SetActive(false);
 
             return;
         }

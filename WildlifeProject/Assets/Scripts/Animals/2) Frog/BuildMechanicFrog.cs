@@ -18,6 +18,7 @@ public class BuildMechanicFrog : MonoBehaviour
 
     public TMP_Text frogLevel;
     public TMP_Text frogRequirement;
+    public GameObject FrogHex;
     public GameObject FrogHex2;
     public GameObject FrogHex3;
     public GameObject waterlilies;
@@ -33,6 +34,14 @@ public class BuildMechanicFrog : MonoBehaviour
 
     public GameObject Bee;
     public GameObject BeeLot;
+
+    private void Update()
+    {
+        if (!FrogWater.activeSelf)
+        {
+            FrogHex.SetActive(true);
+        }
+    }
 
     private void Awake()
     {

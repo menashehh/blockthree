@@ -4,12 +4,15 @@ using TMPro;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WormInteraction : MonoBehaviour
 {
     // Script for the interactions with the worm (name, task, button)
 
     Highlight HighlightScript;
+
+    public AudioSource wormSFX;
 
     public GameObject TaskTextPrefab;
     private GameObject text;
@@ -31,7 +34,7 @@ public class WormInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
+        if (GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
             && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
             && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
             && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")
@@ -46,13 +49,17 @@ public class WormInteraction : MonoBehaviour
 
             if (!GameObject.Find("Build Button Worm")) HighlightScript.ToggleHighlight(true);
         }
-    }   
+    }
 
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
-        if (!GameObject.Find("Background") && GameObject.Find("wormText"))
+        if (!GameObject.Find("Background") && GameObject.Find("wormText") && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f) npcName = true;
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f)
+            {
+                npcName = true;
+                wormSFX.Play();
+            }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 80f) npcName = false;
 
@@ -97,6 +104,14 @@ public class WormInteraction : MonoBehaviour
             BuildButtonWorm.SetActive(true);
         }
         else BuildButtonWorm.SetActive(false);
+
+        if (!GameObject.Find("Background") && GameObject.Find("wormText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
+        {
+            wormText.SetActive(false);
+            npcName = false;
+            menuOpen = 0;
+        }
 
         if (!GameObject.Find("Background") && wormLevel.text != "Level 7" && Camera.main.fieldOfView <= 80f && npcName == false)
         {

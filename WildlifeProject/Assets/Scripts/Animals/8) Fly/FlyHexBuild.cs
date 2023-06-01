@@ -38,9 +38,9 @@ public class FlyHexBuild : MonoBehaviour
 
             FlyReq.SetActive(true);
 
-            FlyHex.GetComponent<MeshRenderer>().material = SandMaterial;
+            GameObject.Find("HexBuildFly").SetActive(false);
 
-            GameObject.Find("HexBuildFly").GetComponent<FlyHex>().menuOpen = 0;
+            GameObject.Find("Hex Button Fly").SetActive(false);
 
             if (!Bee.activeSelf)
             {
@@ -61,9 +61,9 @@ public class FlyHexBuild : MonoBehaviour
 
             FlyGrass.SetActive(true);
 
-            FlyHex2.GetComponent<MeshRenderer>().material = SandMaterial;
+            GameObject.Find("HexBuildFly2").SetActive(false);
 
-            GameObject.Find("HexBuildFly2").GetComponent<FlyHex2>().menuOpen = 0;
+            GameObject.Find("Hex Button Fly 2").SetActive(false);
 
             return;
         }

@@ -24,6 +24,7 @@ public class BuildMechanicSparrow : MonoBehaviour
     public GameObject sparrowGrass;
     public GameObject SparrowHex;
     public GameObject SparrowHex2;
+    public GameObject BuzzardHex;
 
     public GameObject buzzard;
     public GameObject buzzardPlot;
@@ -33,6 +34,14 @@ public class BuildMechanicSparrow : MonoBehaviour
     {
         lotScript = Lots.GetComponent<LotCount>();
         resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
+    private void Update()
+    {
+        if (!buzzardReq.activeSelf && sparrowLevel.text == "Level 2")
+        {
+            BuzzardHex.SetActive(true);
+        }
     }
 
     public void BuildSparrow()

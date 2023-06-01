@@ -16,6 +16,7 @@ public class BuildMechanicFly : MonoBehaviour
     public GameObject FlyReq;
     public GameObject FlyStation;
     public GameObject FlyGrass;
+    public GameObject FlyHex;
     public GameObject FlyHex2;
 
     public AudioSource Locked;
@@ -24,6 +25,14 @@ public class BuildMechanicFly : MonoBehaviour
     private void Awake()
     {
         resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
+    private void Update()
+    {
+        if (!FlyReq.activeSelf && flyLevel.text == "Level 0")
+        {
+            FlyHex.SetActive(true);
+        }
     }
 
     public void BuildFly()

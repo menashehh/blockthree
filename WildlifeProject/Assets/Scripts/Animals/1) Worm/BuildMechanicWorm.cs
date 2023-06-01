@@ -16,6 +16,7 @@ public class BuildMechanicWorm : MonoBehaviour
 
     public TMP_Text wormLevel;
     public TMP_Text wormRequirement;
+    public GameObject wormHex;
     public GameObject wormHex2;
     public GameObject wormHex3;
     public GameObject wormHex4;
@@ -30,6 +31,7 @@ public class BuildMechanicWorm : MonoBehaviour
     public GameObject AppleFly;
 
     public GameObject FrogWater;
+    public GameObject frogHex;
 
     public GameObject sparrow;
     public GameObject sparrowPlot;
@@ -41,6 +43,19 @@ public class BuildMechanicWorm : MonoBehaviour
     {
         lotScript = Lots.GetComponent<LotCount>();
         resourceCountScript = resourceCountObject.GetComponent<ResourceCount>();
+    }
+
+    private void Update()
+    {
+        if (!apple.activeSelf && wormLevel.text == "Level 0")
+        {
+            wormHex.SetActive(true);
+        }
+
+        if (!FrogWater.activeSelf && wormLevel.text == "Level 3")
+        {
+            frogHex.SetActive(true);
+        }   
     }
 
     public void BuildWorm()

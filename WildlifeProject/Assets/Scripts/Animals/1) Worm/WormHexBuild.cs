@@ -28,7 +28,7 @@ public class WormHexBuild : MonoBehaviour
 
     public GameObject frog;
     public GameObject frogPlot;
-    public GameObject frogPlotTrees;
+    // public GameObject frogPlotTrees;
 
 
     private void Awake()
@@ -45,15 +45,15 @@ public class WormHexBuild : MonoBehaviour
 
             frog.SetActive(true);
             frogPlot.SetActive(true);
-            frogPlotTrees.SetActive(true);
+            // frogPlotTrees.SetActive(true);
 
-            WormHex.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildWorm").SetActive(false);
+
+            GameObject.Find("Hex Button Worm").SetActive(false);
 
             AnimalUnlock.Play();
 
             lotScript.lotsCount += 1;
-
-            GameObject.Find("HexBuildWorm").GetComponent<WormHex>().menuOpen = 0;
 
             return;
         }
@@ -64,9 +64,9 @@ public class WormHexBuild : MonoBehaviour
 
             waterWorm.SetActive(true);
 
-            WormHex2.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildWorm2").SetActive(false);
 
-            GameObject.Find("HexBuildWorm2").GetComponent<WormHex2>().menuOpen = 0;
+            GameObject.Find("Hex Button Worm 2").SetActive(false);
 
             return;
         }
@@ -77,9 +77,9 @@ public class WormHexBuild : MonoBehaviour
 
             treeWorm.SetActive(true);
 
-            WormHex3.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildWorm3").SetActive(false);
 
-            GameObject.Find("HexBuildWorm3").GetComponent<WormHex3>().menuOpen = 0;
+            GameObject.Find("Hex Button Worm 3").SetActive(false);
 
             return;
         }
@@ -90,9 +90,9 @@ public class WormHexBuild : MonoBehaviour
 
             grass2Worm.SetActive(true);
 
-            WormHex4.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildWorm4").SetActive(false);
 
-            GameObject.Find("HexBuildWorm4").GetComponent<WormHex4>().menuOpen = 0;
+            GameObject.Find("Hex Button Worm 4").SetActive(false);
 
             return;
         }

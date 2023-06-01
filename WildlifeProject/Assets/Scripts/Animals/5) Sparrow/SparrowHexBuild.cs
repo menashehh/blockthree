@@ -32,9 +32,9 @@ public class SparrowHexBuild : MonoBehaviour
 
             SparrowWater.SetActive(true);
 
-            SparrowHex.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildSparrow").SetActive(false);
 
-            GameObject.Find("HexBuildSparrow").GetComponent<SparrowHex>().menuOpen = 0;
+            GameObject.Find("Hex Button Sparrow").SetActive(false);
 
             return;
         }
@@ -45,9 +45,9 @@ public class SparrowHexBuild : MonoBehaviour
 
             SparrowGrass.SetActive(true);
 
-            SparrowHex2.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildSparrow2").SetActive(false);
 
-            GameObject.Find("HexBuildSparrow2").GetComponent<SparrowHex2>().menuOpen = 0;
+            GameObject.Find("Hex Button Sparrow 2").SetActive(false);
 
             return;
         }

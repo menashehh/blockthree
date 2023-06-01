@@ -32,9 +32,9 @@ public class FrogHexBuild : MonoBehaviour
 
             FrogWater.SetActive(true);
 
-            FrogHex.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildFrog").SetActive(false);
 
-            GameObject.Find("HexBuildFrog").GetComponent<FrogHex>().menuOpen = 0;
+            GameObject.Find("Hex Button Frog").SetActive(false);
 
             return;
         }
@@ -45,9 +45,9 @@ public class FrogHexBuild : MonoBehaviour
 
             FrogTree.SetActive(true);
 
-            FrogHex2.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildFrog2").SetActive(false);
 
-            GameObject.Find("HexBuildFrog2").GetComponent<FrogHex2>().menuOpen = 0;
+            GameObject.Find("Hex Button Frog 2").SetActive(false);
 
             return;
         }
@@ -58,9 +58,9 @@ public class FrogHexBuild : MonoBehaviour
 
             FrogGrass.SetActive(true);
 
-            FrogHex3.GetComponent<MeshRenderer>().material = DirtMaterial;
+            GameObject.Find("HexBuildFrog3").SetActive(false);
 
-            GameObject.Find("HexBuildFrog3").GetComponent<FrogHex3>().menuOpen = 0;
+            GameObject.Find("Hex Button Frog 3").SetActive(false);
 
             return;
         }
