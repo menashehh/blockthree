@@ -26,7 +26,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] float expandFadeDuration;
     [SerializeField] float collapseFadeDuration;
 
-    [SerializeField] Button Main_Button;
+    Button Main_Button;
     SettingsMenuItem[] menuItems;
     bool isExpanded = false;
 

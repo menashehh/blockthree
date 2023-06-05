@@ -11,7 +11,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
   m_ValidKeywords:
   - UNDERLAY_ON
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - RATIOS_OFF
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -71,9 +72,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.9
+    - _ScaleRatioA: 1
     - _ScaleRatioB: 0.73125
-    - _ScaleRatioC: 0.625
+    - _ScaleRatioC: 1
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -86,9 +87,9 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 1024
     - _TextureWidth: 1024
-    - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 1
-    - _UnderlayOffsetY: -1
+    - _UnderlayDilate: -0.52
+    - _UnderlayOffsetX: 0.786
+    - _UnderlayOffsetY: -0.389
     - _UnderlaySoftness: 0.17
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
