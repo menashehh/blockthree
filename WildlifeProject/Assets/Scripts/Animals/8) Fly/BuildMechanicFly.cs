@@ -42,6 +42,9 @@ public class BuildMechanicFly : MonoBehaviour
             flyLevel.text = "Level 1";
             flyRequirement.text = "30 Resources to build idle station";
 
+            Destroy(GameObject.Find("Fly").GetComponent<FlyInteraction>().text2);
+            GameObject.Find("Fly").GetComponent<FlyInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -55,6 +58,9 @@ public class BuildMechanicFly : MonoBehaviour
             flyLevel.text = "Level 2";
             flyRequirement.text = "Grass";
 
+            Destroy(GameObject.Find("Fly").GetComponent<FlyInteraction>().text2);
+            GameObject.Find("Fly").GetComponent<FlyInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -64,6 +70,9 @@ public class BuildMechanicFly : MonoBehaviour
 
             flyLevel.text = "Level 3";
             flyRequirement.text = "Maximum Level Reached";
+
+            Destroy(GameObject.Find("Fly").GetComponent<FlyInteraction>().text2);
+            GameObject.Find("Fly").GetComponent<FlyInteraction>().levelPrefabLimit = 0;
 
             return;
         }

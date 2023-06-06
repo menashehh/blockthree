@@ -15,8 +15,12 @@ public class WormInteraction : MonoBehaviour
     public AudioSource wormSFX;
 
     public GameObject TaskTextPrefab;
-    private GameObject text;
+    public GameObject AnimalLevelPrefab;
+
+    public GameObject text;
+    public GameObject text2;
     public int prefabLimit = 0;
+    public int levelPrefabLimit = 0;
 
     public GameObject wormText;
     public TMP_Text wormLevel;
@@ -117,7 +121,7 @@ public class WormInteraction : MonoBehaviour
         {
             if (prefabLimit != 1)
             {
-                text = Instantiate(TaskTextPrefab, GameObject.Find("Worm").transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+                text = Instantiate(TaskTextPrefab, GameObject.Find("Worm").transform.position + new Vector3(0f, 1.2f, 0f), Quaternion.identity);
                 prefabLimit++;
             }
         }
@@ -125,6 +129,21 @@ public class WormInteraction : MonoBehaviour
         {
             Destroy(text);
             prefabLimit = 0;
+        }
+
+        if (!GameObject.Find("Background") &&  Camera.main.fieldOfView <= 80f)
+        {
+            if (levelPrefabLimit != 1)
+            {
+                text2 = Instantiate(AnimalLevelPrefab, GameObject.Find("Worm").transform.position + new Vector3(0f, 0.7f, 0f), Quaternion.identity);
+                text2.GetComponent<TMPro.TextMeshPro>().SetText(wormLevel.text);
+                levelPrefabLimit++;
+            }
+        }
+        else
+        {
+            Destroy(text2);
+            levelPrefabLimit = 0;
         }
     }
 }

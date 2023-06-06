@@ -45,7 +45,7 @@ public class FlyIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
                 }
             }
@@ -56,7 +56,7 @@ public class FlyIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
                 }
             }
@@ -76,7 +76,7 @@ public class FlyIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
                 }
             }

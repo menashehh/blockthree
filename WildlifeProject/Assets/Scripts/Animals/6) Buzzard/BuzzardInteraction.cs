@@ -13,8 +13,12 @@ public class BuzzardInteraction : MonoBehaviour
     public AudioSource buzzardSFX;
 
     public GameObject TaskTextPrefab;
-    private GameObject text;
+    public GameObject AnimalLevelPrefab;
+
+    public GameObject text;
+    public GameObject text2;
     public int prefabLimit = 0;
+    public int levelPrefabLimit = 0;
 
     public GameObject buzzardText;
     public TMP_Text buzzardLevel;
@@ -115,7 +119,7 @@ public class BuzzardInteraction : MonoBehaviour
         {
             if (prefabLimit != 1)
             {
-                text = Instantiate(TaskTextPrefab, GameObject.Find("Buzzard").transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+                text = Instantiate(TaskTextPrefab, GameObject.Find("Buzzard").transform.position + new Vector3(13f, 1.2f, 2.5f), Quaternion.identity);
                 prefabLimit++;
             }
         }
@@ -123,6 +127,21 @@ public class BuzzardInteraction : MonoBehaviour
         {
             Destroy(text);
             prefabLimit = 0;
+        }
+
+        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 80f)
+        {
+            if (levelPrefabLimit != 1)
+            {
+                text2 = Instantiate(AnimalLevelPrefab, GameObject.Find("Buzzard").transform.position + new Vector3(13f, 0.7f, 2.5f), Quaternion.identity);
+                text2.GetComponent<TMPro.TextMeshPro>().SetText(buzzardLevel.text);
+                levelPrefabLimit++;
+            }
+        }
+        else
+        {
+            Destroy(text2);
+            levelPrefabLimit = 0;
         }
     }
 }

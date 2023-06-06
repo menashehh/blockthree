@@ -46,7 +46,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
                 }
             }
@@ -57,7 +57,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
                 }
             }
@@ -68,7 +68,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+3.7");
                 }
             }
@@ -79,7 +79,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+4.7");
                 }
             }
@@ -90,7 +90,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+5.7");
                 }
             }
@@ -101,7 +101,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+6.7");
                 }
             }
@@ -121,7 +121,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
                 }
             }
@@ -132,7 +132,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+2.5");
                 }
             }
@@ -143,7 +143,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+3");
                 }
             }
@@ -154,7 +154,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+3.5");
                 }
             }
@@ -165,7 +165,7 @@ public class WormIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Apple Tree").transform.position + new Vector3(0f, 2.1f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+4");
                 }
             }

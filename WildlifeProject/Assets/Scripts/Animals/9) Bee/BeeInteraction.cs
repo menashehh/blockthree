@@ -13,8 +13,12 @@ public class BeeInteraction : MonoBehaviour
     public AudioSource beeSFX;
 
     public GameObject TaskTextPrefab;
-    private GameObject text;
+    public GameObject AnimalLevelPrefab;
+
+    public GameObject text;
+    public GameObject text2;
     public int prefabLimit = 0;
+    public int levelPrefabLimit = 0;
 
     public GameObject beeText;
     public TMP_Text beeLevel;
@@ -115,7 +119,7 @@ public class BeeInteraction : MonoBehaviour
         {
             if (prefabLimit != 1)
             {
-                text = Instantiate(TaskTextPrefab, GameObject.Find("Bee").transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+                text = Instantiate(TaskTextPrefab, GameObject.Find("Bee").transform.position + new Vector3(-0.3f, 2.7f, 1f), Quaternion.identity);
                 prefabLimit++;
             }
         }
@@ -123,6 +127,21 @@ public class BeeInteraction : MonoBehaviour
         {
             Destroy(text);
             prefabLimit = 0;
+        }
+
+        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 80f)
+        {
+            if (levelPrefabLimit != 1)
+            {
+                text2 = Instantiate(AnimalLevelPrefab, GameObject.Find("Bee").transform.position + new Vector3(-0.3f, 2.2f, 1f), Quaternion.identity);
+                text2.GetComponent<TMPro.TextMeshPro>().SetText(beeLevel.text);
+                levelPrefabLimit++;
+            }
+        }
+        else
+        {
+            Destroy(text2);
+            levelPrefabLimit = 0;
         }
     }
 }

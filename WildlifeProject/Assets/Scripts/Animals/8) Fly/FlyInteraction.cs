@@ -13,8 +13,12 @@ public class FlyInteraction : MonoBehaviour
     public AudioSource flySFX;
 
     public GameObject TaskTextPrefab;
-    private GameObject text;
+    public GameObject AnimalLevelPrefab;
+
+    public GameObject text;
+    public GameObject text2;
     public int prefabLimit = 0;
+    public int levelPrefabLimit = 0;
 
     public GameObject flyText;
     public TMP_Text flyLevel;
@@ -115,7 +119,7 @@ public class FlyInteraction : MonoBehaviour
         {
             if (prefabLimit != 1)
             {
-                text = Instantiate(TaskTextPrefab, GameObject.Find("Fly").transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+                text = Instantiate(TaskTextPrefab, GameObject.Find("Fly").transform.position + new Vector3(0f, 2.2f, 0f), Quaternion.identity);
                 prefabLimit++;
             }
         }
@@ -123,6 +127,21 @@ public class FlyInteraction : MonoBehaviour
         {
             Destroy(text);
             prefabLimit = 0;
+        }
+
+        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 80f)
+        {
+            if (levelPrefabLimit != 1)
+            {
+                text2 = Instantiate(AnimalLevelPrefab, GameObject.Find("Fly").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
+                text2.GetComponent<TMPro.TextMeshPro>().SetText(flyLevel.text);
+                levelPrefabLimit++;
+            }
+        }
+        else
+        {
+            Destroy(text2);
+            levelPrefabLimit = 0;
         }
     }
 }

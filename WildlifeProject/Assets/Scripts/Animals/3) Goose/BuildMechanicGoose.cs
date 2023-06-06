@@ -51,6 +51,9 @@ public class BuildMechanicGoose : MonoBehaviour
 
             lotScript.lotsCount += 1;
 
+            Destroy(GameObject.Find("Goose").GetComponent<GooseInteraction>().text2);
+            GameObject.Find("Goose").GetComponent<GooseInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -60,6 +63,9 @@ public class BuildMechanicGoose : MonoBehaviour
 
             gooseLevel.text = "Level 2";
             gooseRequirement.text = "Maximum Level Reached";
+
+            Destroy(GameObject.Find("Goose").GetComponent<GooseInteraction>().text2);
+            GameObject.Find("Goose").GetComponent<GooseInteraction>().levelPrefabLimit = 0;
 
             return;
         }

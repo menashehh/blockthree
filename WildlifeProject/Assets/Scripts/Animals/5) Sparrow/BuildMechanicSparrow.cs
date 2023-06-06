@@ -61,6 +61,9 @@ public class BuildMechanicSparrow : MonoBehaviour
             sparrowLevel.text = "Level 1";
             sparrowRequirement.text = "Water";
 
+            Destroy(GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().text2);
+            GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -68,6 +71,11 @@ public class BuildMechanicSparrow : MonoBehaviour
         {
             sparrowLevel.text = "Level 2";
             sparrowRequirement.text = "Tree (buzzard)";
+
+            Destroy(GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().text2);
+            GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().levelPrefabLimit = 0;
+
+            return;
         }
 
         if (resourceCountScript.resources >= 0 && buzzardReq.activeSelf && sparrowLevel.text == "Level 2")
@@ -76,6 +84,9 @@ public class BuildMechanicSparrow : MonoBehaviour
 
             sparrowLevel.text = "Level 3";
             sparrowRequirement.text = "Grass";
+
+            Destroy(GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().text2);
+            GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().levelPrefabLimit = 0;
 
             return;
         }
@@ -86,6 +97,9 @@ public class BuildMechanicSparrow : MonoBehaviour
 
             sparrowLevel.text = "Level 4";
             sparrowRequirement.text = "Maximum Level Reached";
+
+            Destroy(GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().text2);
+            GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().levelPrefabLimit = 0;
 
             return;
         }

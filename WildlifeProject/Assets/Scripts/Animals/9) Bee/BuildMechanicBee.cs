@@ -38,6 +38,9 @@ public class BuildMechanicBee : MonoBehaviour
             beeLevel.text = "Level 1";
             beeRequirement.text = "Tree";
 
+            Destroy(GameObject.Find("Bee").GetComponent<BeeInteraction>().text2);
+            GameObject.Find("Bee").GetComponent<BeeInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -45,6 +48,9 @@ public class BuildMechanicBee : MonoBehaviour
         {
             beeLevel.text = "Level 2";
             beeRequirement.text = "Frog Level 4";
+
+            Destroy(GameObject.Find("Bee").GetComponent<BeeInteraction>().text2);
+            GameObject.Find("Bee").GetComponent<BeeInteraction>().levelPrefabLimit = 0;
 
             return;
         }
@@ -55,6 +61,9 @@ public class BuildMechanicBee : MonoBehaviour
 
             beeLevel.text = "Level 3";
             beeRequirement.text = "Maximum Level Reached";
+
+            Destroy(GameObject.Find("Bee").GetComponent<BeeInteraction>().text2);
+            GameObject.Find("Bee").GetComponent<BeeInteraction>().levelPrefabLimit = 0;
 
             return;
         }

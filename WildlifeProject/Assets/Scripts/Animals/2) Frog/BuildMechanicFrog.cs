@@ -55,7 +55,10 @@ public class BuildMechanicFrog : MonoBehaviour
         {
             frogLevel.text = "Level 1";
             frogRequirement.text = "30 Resources to build idle station";
-            
+
+            Destroy(GameObject.Find("Frog").GetComponent<FrogInteraction>().text2);
+            GameObject.Find("Frog").GetComponent<FrogInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -76,6 +79,9 @@ public class BuildMechanicFrog : MonoBehaviour
             frogLevel.text = "Level 2";
             frogRequirement.text = "Tree";
 
+            Destroy(GameObject.Find("Frog").GetComponent<FrogInteraction>().text2);
+            GameObject.Find("Frog").GetComponent<FrogInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -83,6 +89,9 @@ public class BuildMechanicFrog : MonoBehaviour
         {
             frogLevel.text = "Level 3";
             frogRequirement.text = "Water Lilies + apple + 270 Resources";
+
+            Destroy(GameObject.Find("Frog").GetComponent<FrogInteraction>().text2);
+            GameObject.Find("Frog").GetComponent<FrogInteraction>().levelPrefabLimit = 0;
 
             return;
         }
@@ -108,6 +117,9 @@ public class BuildMechanicFrog : MonoBehaviour
             frogLevel.text = "Level 4";
             frogRequirement.text = "Grass";
 
+            Destroy(GameObject.Find("Frog").GetComponent<FrogInteraction>().text2);
+            GameObject.Find("Frog").GetComponent<FrogInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -117,6 +129,9 @@ public class BuildMechanicFrog : MonoBehaviour
 
             frogLevel.text = "Level 5";
             frogRequirement.text = "Maximum Level Reached";
+
+            Destroy(GameObject.Find("Frog").GetComponent<FrogInteraction>().text2);
+            GameObject.Find("Frog").GetComponent<FrogInteraction>().levelPrefabLimit = 0;
 
             return;
         }

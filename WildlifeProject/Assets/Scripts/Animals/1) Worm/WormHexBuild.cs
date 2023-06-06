@@ -19,8 +19,8 @@ public class WormHexBuild : MonoBehaviour
     public GameObject worm;
     public GameObject waterWorm;
     public GameObject treeWorm;
+    public GameObject grass1Worm;
     public GameObject grass2Worm;
-    public GameObject apple;
     public GameObject WormHex;
     public GameObject WormHex2;
     public GameObject WormHex3;
@@ -39,9 +39,9 @@ public class WormHexBuild : MonoBehaviour
 
     public void BuildHexWorm()
     {
-        if (resourceCountScript.resources >= 0 && !apple.activeSelf && wormLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 0 && !grass1Worm.activeSelf && wormLevel.text == "Level 0")
         {
-            apple.SetActive(true);
+            grass1Worm.SetActive(true);
 
             frog.SetActive(true);
             frogPlot.SetActive(true);

@@ -45,7 +45,7 @@ public class FrogIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Flower").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
                 }
             }
@@ -56,7 +56,7 @@ public class FrogIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Flower").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
                 }
             }
@@ -67,7 +67,7 @@ public class FrogIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Flower").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+3.7");
                 }
             }
@@ -78,7 +78,7 @@ public class FrogIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Flower").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+4.7");
                 }
             }
@@ -98,7 +98,7 @@ public class FrogIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Flower").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
                 }
             }
@@ -109,7 +109,7 @@ public class FrogIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Flower").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+2.5");
                 }
             }
@@ -120,7 +120,7 @@ public class FrogIdleStation : MonoBehaviour
 
                 if (FloatingTextPrefab != null)
                 {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Flower").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+3");
                 }
             }

@@ -13,8 +13,12 @@ public class GooseInteraction : MonoBehaviour
     public AudioSource gooseSFX;
 
     public GameObject TaskTextPrefab;
-    private GameObject text;
+    public GameObject AnimalLevelPrefab;
+
+    public GameObject text;
+    public GameObject text2;
     public int prefabLimit = 0;
+    public int levelPrefabLimit = 0;
 
     public GameObject gooseText;
     public TMP_Text gooseLevel;
@@ -114,7 +118,7 @@ public class GooseInteraction : MonoBehaviour
         {
             if (prefabLimit != 1)
             {
-                text = Instantiate(TaskTextPrefab, GameObject.Find("Goose").transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+                text = Instantiate(TaskTextPrefab, GameObject.Find("Goose").transform.position + new Vector3(0f, 2f, 0f), Quaternion.identity);
                 prefabLimit++;
             }
         }
@@ -122,6 +126,21 @@ public class GooseInteraction : MonoBehaviour
         {
             Destroy(text);
             prefabLimit = 0;
+        }
+
+        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 80f)
+        {
+            if (levelPrefabLimit != 1)
+            {
+                text2 = Instantiate(AnimalLevelPrefab, GameObject.Find("Goose").transform.position + new Vector3(0f, 1.5f, 0f), Quaternion.identity);
+                text2.GetComponent<TMPro.TextMeshPro>().SetText(gooseLevel.text);
+                levelPrefabLimit++;
+            }
+        }
+        else
+        {
+            Destroy(text2);
+            levelPrefabLimit = 0;
         }
     }
 }

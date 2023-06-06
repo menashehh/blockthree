@@ -41,6 +41,9 @@ public class BuildMechanicBuzzard : MonoBehaviour
             buzzardLevel.text = "Level 1";
             buzzardRequirement.text = "30 Resources to build idle station";
 
+            Destroy(GameObject.Find("Buzzard").GetComponent<BuzzardInteraction>().text2);
+            GameObject.Find("Buzzard").GetComponent<BuzzardInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -54,6 +57,9 @@ public class BuildMechanicBuzzard : MonoBehaviour
             buzzardLevel.text = "Level 2";
             buzzardRequirement.text = "Grass";
 
+            Destroy(GameObject.Find("Buzzard").GetComponent<BuzzardInteraction>().text2);
+            GameObject.Find("Buzzard").GetComponent<BuzzardInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -63,6 +69,9 @@ public class BuildMechanicBuzzard : MonoBehaviour
 
             buzzardLevel.text = "Level 3";
             buzzardRequirement.text = "Maximum Level Reached";
+
+            Destroy(GameObject.Find("Buzzard").GetComponent<BuzzardInteraction>().text2);
+            GameObject.Find("Buzzard").GetComponent<BuzzardInteraction>().levelPrefabLimit = 0;
 
             return;
         }

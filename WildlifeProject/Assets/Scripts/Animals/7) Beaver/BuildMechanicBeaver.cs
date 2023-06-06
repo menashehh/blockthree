@@ -33,6 +33,9 @@ public class BuildMechanicBeaver : MonoBehaviour
             beaverLevel.text = "Level 1";
             beaverRequirement.text = "30 Resources to build idle station";
 
+            Destroy(GameObject.Find("Beaver").GetComponent<BeaverInteraction>().text2);
+            GameObject.Find("Beaver").GetComponent<BeaverInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -46,6 +49,9 @@ public class BuildMechanicBeaver : MonoBehaviour
             beaverLevel.text = "Level 2";  
             beaverRequirement.text = "Tree";
 
+            Destroy(GameObject.Find("Beaver").GetComponent<BeaverInteraction>().text2);
+            GameObject.Find("Beaver").GetComponent<BeaverInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -55,6 +61,9 @@ public class BuildMechanicBeaver : MonoBehaviour
 
             beaverLevel.text = "Level 3";
             beaverRequirement.text = "Maximum Level Reached";
+
+            Destroy(GameObject.Find("Beaver").GetComponent<BeaverInteraction>().text2);
+            GameObject.Find("Beaver").GetComponent<BeaverInteraction>().levelPrefabLimit = 0;
 
             return;
         }

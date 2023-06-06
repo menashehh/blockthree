@@ -23,10 +23,10 @@ public class BuildMechanicWorm : MonoBehaviour
     public GameObject worm;
     public GameObject waterWorm;
     public GameObject treeWorm;
+    public GameObject grass1Worm;
     public GameObject grass2Worm;
     public GameObject buttercup;
-    public GameObject apple;
-    public GameObject appleTreeStation;
+    public GameObject wormStation;
 
     public GameObject AppleFly;
 
@@ -47,7 +47,7 @@ public class BuildMechanicWorm : MonoBehaviour
 
     private void Update()
     {
-        if (!apple.activeSelf && wormLevel.text == "Level 0")
+        if (!grass1Worm.activeSelf && wormLevel.text == "Level 0")
         {
             wormHex.SetActive(true);
         }
@@ -55,22 +55,25 @@ public class BuildMechanicWorm : MonoBehaviour
         if (!FrogWater.activeSelf && wormLevel.text == "Level 3")
         {
             frogHex.SetActive(true);
-        }   
+        }
     }
 
     public void BuildWorm()
     {
-        if (resourceCountScript.resources >= 0 && apple.activeSelf && wormLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 0 && grass1Worm.activeSelf && wormLevel.text == "Level 0")
         {
             wormLevel.text = "Level 1";
             wormRequirement.text = "Build idle station (Free)";
 
+            Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
+            GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
-        if (resourceCountScript.resources >= 0 && !appleTreeStation.activeSelf && wormLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 0 && !wormStation.activeSelf && wormLevel.text == "Level 1")
         {
-            appleTreeStation.SetActive(true);
+            wormStation.SetActive(true);
             sparrow.SetActive(true);
             sparrowPlot.SetActive(true);
 
@@ -82,6 +85,9 @@ public class BuildMechanicWorm : MonoBehaviour
             wormLevel.text = "Level 2";
             wormRequirement.text = "Water";
 
+            Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
+            GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -89,6 +95,9 @@ public class BuildMechanicWorm : MonoBehaviour
         {
             wormLevel.text = "Level 3";
             wormRequirement.text = "Water (Frog) + 90 Resources";
+
+            Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
+            GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
 
             return;
         }
@@ -101,12 +110,20 @@ public class BuildMechanicWorm : MonoBehaviour
             wormRequirement.text = "Tree";
 
             wormHex3.SetActive(true);
+
+            Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
+            GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
+
+            return;
         }
 
         if (resourceCountScript.resources >= 0 && treeWorm.activeSelf && wormLevel.text == "Level 4")
         {
             wormLevel.text = "Level 5";
             wormRequirement.text = "Buttercup + apple + 810 Resources";
+
+            Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
+            GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
 
             return;
         }
@@ -132,6 +149,9 @@ public class BuildMechanicWorm : MonoBehaviour
             wormLevel.text = "Level 6";
             wormRequirement.text = "Grass";
 
+            Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
+            GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
+
             return;
         }
 
@@ -141,6 +161,9 @@ public class BuildMechanicWorm : MonoBehaviour
 
             wormLevel.text = "Level 7";
             wormRequirement.text = "Maximum Level Reached";
+
+            Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
+            GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
 
             return;
         }
