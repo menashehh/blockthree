@@ -24,9 +24,9 @@ public class BeeHexBuild : MonoBehaviour
 
     public void BuildHexBee()
     {
-        if (resourceCountScript.resources >= 30 && !BeeTree.activeSelf && beeLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 12720 && !BeeTree.activeSelf && beeLevel.text == "Level 1")
         {
-            resourceCountScript.resources -= 30;
+            resourceCountScript.resources -= 12720;
 
             BeeTree.SetActive(true);
 

@@ -41,45 +41,45 @@ public class SparrowIdleStation : MonoBehaviour
         {
             if (sparrowLevel.text == "Level 1")
             {
-                resourceCountScript.resources += 1.7f;
+                resourceCountScript.resources += 8f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Sparrow Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+8");
                 }
             }
 
             if (sparrowLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 2.7f;
+                resourceCountScript.resources += 15f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Sparrow Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+15");
                 }
             }
 
             if (sparrowLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 3.7f;
+                resourceCountScript.resources += 20f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Sparrow Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+20");
                 }
             }
 
             if (sparrowLevel.text == "Level 4")
             {
-                resourceCountScript.resources += 4.7f;
+                resourceCountScript.resources += 30f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Sparrow Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+4.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+30");
                 }
             }
         }
@@ -94,34 +94,34 @@ public class SparrowIdleStation : MonoBehaviour
         {
             if (sparrowLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 1.5f;
+                resourceCountScript.resources += 16f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Sparrow Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+16");
                 }
             }
 
             if (sparrowLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 2.5f;
+                resourceCountScript.resources += 26f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Sparrow Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+26");
                 }
             }
 
             if (sparrowLevel.text == "Level 4")
             {
-                resourceCountScript.resources += 3f;
+                resourceCountScript.resources += 40f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Sparrow Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+40");
                 }
             }
 

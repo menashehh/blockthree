@@ -41,23 +41,23 @@ public class FlyIdleStation : MonoBehaviour
         {
             if (flyLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 1.7f;
+                resourceCountScript.resources += 15f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+15");
                 }
             }
 
             if (flyLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 2.7f;
+                resourceCountScript.resources += 25f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+25");
                 }
             }
         }
@@ -72,12 +72,12 @@ public class FlyIdleStation : MonoBehaviour
         {
             if (flyLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 1.5f;
+                resourceCountScript.resources += 27f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Fly Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+27");
                 }
             }
 

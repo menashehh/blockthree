@@ -40,7 +40,7 @@ public class BuildMechanicFly : MonoBehaviour
         if (resourceCountScript.resources >= 0 && FlyReq.activeSelf && flyLevel.text == "Level 0")
         {
             flyLevel.text = "Level 1";
-            flyRequirement.text = "30 Resources to build idle station";
+            flyRequirement.text = "2230 Resources to build idle station";
 
             Destroy(GameObject.Find("Fly").GetComponent<FlyInteraction>().text2);
             GameObject.Find("Fly").GetComponent<FlyInteraction>().levelPrefabLimit = 0;
@@ -48,9 +48,9 @@ public class BuildMechanicFly : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 30 && !FlyStation.activeSelf && flyLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 2230 && !FlyStation.activeSelf && flyLevel.text == "Level 1")
         {
-            resourceCountScript.resources -= 30;
+            resourceCountScript.resources -= 2230;
 
             FlyStation.SetActive(true);
             FlyHex2.SetActive(true);

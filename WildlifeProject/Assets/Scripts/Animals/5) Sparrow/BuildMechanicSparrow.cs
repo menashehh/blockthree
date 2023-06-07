@@ -46,8 +46,10 @@ public class BuildMechanicSparrow : MonoBehaviour
 
     public void BuildSparrow()
     {
-        if (resourceCountScript.resources >= 0 && !sparrowStation.activeSelf && (wormLevel.text == "Level 3" || wormLevel.text == "Level 4" || wormLevel.text == "Level 5" || wormLevel.text == "Level 6" || wormLevel.text == "Level 7"))
+        if (resourceCountScript.resources >= 375 && !sparrowStation.activeSelf && (wormLevel.text == "Level 3" || wormLevel.text == "Level 4" || wormLevel.text == "Level 5" || wormLevel.text == "Level 6" || wormLevel.text == "Level 7"))
         {
+            resourceCountScript.resources -= 375;
+
             sparrowStation.SetActive(true);
             SparrowHex.SetActive(true);
 
@@ -70,7 +72,7 @@ public class BuildMechanicSparrow : MonoBehaviour
         if (resourceCountScript.resources >= 0 && sparrowWater.activeSelf && sparrowLevel.text == "Level 1")
         {
             sparrowLevel.text = "Level 2";
-            sparrowRequirement.text = "Tree (buzzard)";
+            sparrowRequirement.text = "Tree (buzzard) + 980 Res";
 
             Destroy(GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().text2);
             GameObject.Find("Sparrow").GetComponent<SparrowInteraction>().levelPrefabLimit = 0;
@@ -78,8 +80,10 @@ public class BuildMechanicSparrow : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 0 && buzzardReq.activeSelf && sparrowLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 980 && buzzardReq.activeSelf && sparrowLevel.text == "Level 2")
         {
+            resourceCountScript.resources -= 980;
+
             SparrowHex2.SetActive(true);
 
             sparrowLevel.text = "Level 3";

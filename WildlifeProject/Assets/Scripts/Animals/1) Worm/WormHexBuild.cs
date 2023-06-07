@@ -71,9 +71,9 @@ public class WormHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 270 && !treeWorm.activeSelf && wormLevel.text == "Level 4")
+        if (resourceCountScript.resources >= 185 && !treeWorm.activeSelf && wormLevel.text == "Level 4")
         {
-            resourceCountScript.resources -= 270;
+            resourceCountScript.resources -= 185;
 
             treeWorm.SetActive(true);
 
@@ -84,9 +84,9 @@ public class WormHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 2430 && !grass2Worm.activeSelf && wormLevel.text == "Level 6")
+        if (resourceCountScript.resources >= 12750 && !grass2Worm.activeSelf && wormLevel.text == "Level 6")
         {
-            resourceCountScript.resources -= 2430;
+            resourceCountScript.resources -= 12750;
 
             grass2Worm.SetActive(true);
 

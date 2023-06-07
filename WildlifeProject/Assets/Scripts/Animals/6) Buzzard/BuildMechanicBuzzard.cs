@@ -39,7 +39,7 @@ public class BuildMechanicBuzzard : MonoBehaviour
         if (resourceCountScript.resources >= 0 && BuzzardReq.activeSelf && buzzardLevel.text == "Level 0")
         {
             buzzardLevel.text = "Level 1";
-            buzzardRequirement.text = "30 Resources to build idle station";
+            buzzardRequirement.text = "1080 Resources to build idle station";
 
             Destroy(GameObject.Find("Buzzard").GetComponent<BuzzardInteraction>().text2);
             GameObject.Find("Buzzard").GetComponent<BuzzardInteraction>().levelPrefabLimit = 0;
@@ -47,9 +47,9 @@ public class BuildMechanicBuzzard : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 30 && !buzzardStation.activeSelf && buzzardLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 1080 && !buzzardStation.activeSelf && buzzardLevel.text == "Level 1")
         {
-            resourceCountScript.resources -= 30;
+            resourceCountScript.resources -= 1080;
 
             buzzardStation.SetActive(true);
             BuzzardHex2.SetActive(true);

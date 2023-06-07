@@ -54,7 +54,7 @@ public class BuildMechanicFrog : MonoBehaviour
         if (resourceCountScript.resources >= 0 && FrogWater.activeSelf && frogLevel.text == "Level 0")
         {
             frogLevel.text = "Level 1";
-            frogRequirement.text = "30 Resources to build idle station";
+            frogRequirement.text = "275 Resources to build idle station";
 
             Destroy(GameObject.Find("Frog").GetComponent<FrogInteraction>().text2);
             GameObject.Find("Frog").GetComponent<FrogInteraction>().levelPrefabLimit = 0;
@@ -62,9 +62,9 @@ public class BuildMechanicFrog : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 30 && !frogStation.activeSelf && frogLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 275 && !frogStation.activeSelf && frogLevel.text == "Level 1")
         {
-            resourceCountScript.resources -= 30;
+            resourceCountScript.resources -= 275;
 
             frogStation.SetActive(true);
             goose.SetActive(true);
@@ -88,7 +88,7 @@ public class BuildMechanicFrog : MonoBehaviour
         if (resourceCountScript.resources >= 0 && FrogTree.activeSelf && frogLevel.text == "Level 2")
         {
             frogLevel.text = "Level 3";
-            frogRequirement.text = "Water Lilies + apple + 270 Resources";
+            frogRequirement.text = "Water Lilies + apple + 500 Resources";
 
             Destroy(GameObject.Find("Frog").GetComponent<FrogInteraction>().text2);
             GameObject.Find("Frog").GetComponent<FrogInteraction>().levelPrefabLimit = 0;
@@ -96,9 +96,9 @@ public class BuildMechanicFrog : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 270 && AppleFly.activeSelf && !waterlilies.activeSelf && frogLevel.text == "Level 3")
+        if (resourceCountScript.resources >= 500 && AppleFly.activeSelf && !waterlilies.activeSelf && frogLevel.text == "Level 3")
         {
-            resourceCountScript.resources -= 270;
+            resourceCountScript.resources -= 500;
 
             waterlilies.SetActive(true);
 

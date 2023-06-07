@@ -41,34 +41,34 @@ public class BeeIdleStation : MonoBehaviour
         {
             if (beeLevel.text == "Level 1")
             {
-                resourceCountScript.resources += 1.7f;
+                resourceCountScript.resources += 35f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Bee Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+35");
                 }
             }
 
             if (beeLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 2.7f;
+                resourceCountScript.resources += 56f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Bee Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+56");
                 }
             }
 
             if (beeLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 3.7f;
+                resourceCountScript.resources += 90f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Bee Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+90");
                 }
             }
         }
@@ -83,23 +83,23 @@ public class BeeIdleStation : MonoBehaviour
         {
             if (beeLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 1.5f;
+                resourceCountScript.resources += 56f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Bee Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+56");
                 }
             }
 
             if (beeLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 2.5f;
+                resourceCountScript.resources += 132f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Bee Station").transform.position + new Vector3(0f, 1.7f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+132");
                 }
             }
 

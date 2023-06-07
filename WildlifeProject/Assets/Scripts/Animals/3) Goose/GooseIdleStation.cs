@@ -41,23 +41,23 @@ public class GooseIdleStation : MonoBehaviour
         {
             if (gooseLevel.text == "Level 1")
             {
-                resourceCountScript.resources += 1.7f;
+                resourceCountScript.resources += 45f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Goose Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+45");
                 }
             }
 
             if (gooseLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 2.7f;
+                resourceCountScript.resources += 75f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Goose Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+75");
                 }
             }
         }
@@ -72,12 +72,12 @@ public class GooseIdleStation : MonoBehaviour
         {
             if (gooseLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 1.5f;
+                resourceCountScript.resources += 30f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Goose Station").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+30");
                 }
             }
 

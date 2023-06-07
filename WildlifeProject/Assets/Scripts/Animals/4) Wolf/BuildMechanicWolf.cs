@@ -40,7 +40,7 @@ public class BuildMechanicWolf : MonoBehaviour
         if (resourceCountScript.resources >= 0 && bone.activeSelf && wolfLevel.text == "Level 0")
         {
             wolfLevel.text = "Level 1";
-            wolfRequirement.text = "30 Resources to build idle station";
+            wolfRequirement.text = "8650 Resources to build idle station";
 
             Destroy(GameObject.Find("Wolf").GetComponent<WolfInteraction>().text2);
             GameObject.Find("Wolf").GetComponent<WolfInteraction>().levelPrefabLimit = 0;
@@ -48,9 +48,9 @@ public class BuildMechanicWolf : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 30 && !wolfStation.activeSelf && wolfLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 8650 && !wolfStation.activeSelf && wolfLevel.text == "Level 1")
         {
-            resourceCountScript.resources -= 30;
+            resourceCountScript.resources -= 8650;
 
             wolfStation.SetActive(true);
             WolfHex2.SetActive(true);

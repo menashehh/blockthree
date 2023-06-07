@@ -32,9 +32,9 @@ public class FlyHexBuild : MonoBehaviour
 
     public void BuildHexFly()
     {
-        if (resourceCountScript.resources >= 10 && !FlyReq.activeSelf)
+        if (resourceCountScript.resources >= 1230 && !FlyReq.activeSelf)
         {
-            resourceCountScript.resources -= 10;
+            resourceCountScript.resources -= 1230;
 
             FlyReq.SetActive(true);
 
@@ -55,9 +55,9 @@ public class FlyHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 90 && !FlyGrass.activeSelf)
+        if (resourceCountScript.resources >= 3230 && !FlyGrass.activeSelf)
         {
-            resourceCountScript.resources -= 90;
+            resourceCountScript.resources -= 3230;
 
             FlyGrass.SetActive(true);
 

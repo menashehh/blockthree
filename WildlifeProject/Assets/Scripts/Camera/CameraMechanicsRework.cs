@@ -63,6 +63,7 @@ public class CameraMechanicsRework : MonoBehaviour
                     && !GameObject.Find("Hex Button Goose")
                     && !GameObject.Find("Hex Button Bee")
                     && !GameObject.Find("Hex Button Beaver")
+                    && !GameObject.Find("Restrict Button")
                     && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
                     && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
                 {
@@ -83,6 +84,7 @@ public class CameraMechanicsRework : MonoBehaviour
                     && !GameObject.Find("Hex Button Goose")
                     && !GameObject.Find("Hex Button Bee")
                     && !GameObject.Find("Hex Button Beaver")
+                    && !GameObject.Find("Restrict Button")
                     && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
                     && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
                 {
@@ -96,6 +98,8 @@ public class CameraMechanicsRework : MonoBehaviour
 
             // CAMERA ZOOM
             var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (GameObject.Find("Restrict Button")) return;
 
             if (GameObject.Find("Build Button Worm") || GameObject.Find("Hex Button Worm") || GameObject.Find("Hex Button Worm 2") || GameObject.Find("Hex Button Worm 3") || GameObject.Find("Hex Button Worm 4"))
             {
@@ -245,6 +249,7 @@ public class CameraMechanicsRework : MonoBehaviour
                     && !GameObject.Find("Hex Button Goose")
                     && !GameObject.Find("Hex Button Bee")
                     && !GameObject.Find("Hex Button Beaver")
+                    && !GameObject.Find("Restrict Button")
                     && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
                     && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
         {

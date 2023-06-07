@@ -42,67 +42,67 @@ public class WormIdleStation : MonoBehaviour
         {
             if (wormLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 1.7f;
+                resourceCountScript.resources += 1f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1");
                 }
             }
 
             if (wormLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 2.7f;
+                resourceCountScript.resources += 2f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2");
                 }
             }
 
             if (wormLevel.text == "Level 4")
             {
-                resourceCountScript.resources += 3.7f;
+                resourceCountScript.resources += 4f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+4");
                 }
             }
 
             if (wormLevel.text == "Level 5")
             {
-                resourceCountScript.resources += 4.7f;
+                resourceCountScript.resources += 6f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+4.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+6");
                 }
             }
 
             if (wormLevel.text == "Level 6")
             {
-                resourceCountScript.resources += 5.7f;
+                resourceCountScript.resources += 12f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+5.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+12");
                 }
             }
 
             if (wormLevel.text == "Level 7")
             {
-                resourceCountScript.resources += 6.7f;
+                resourceCountScript.resources += 36f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+6.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+36");
                 }
             }
         }
@@ -117,49 +117,27 @@ public class WormIdleStation : MonoBehaviour
         {
             if (wormLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 1.5f;
+                resourceCountScript.resources += 1f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1");
                 }
             }
 
             if (wormLevel.text == "Level 4")
             {
-                resourceCountScript.resources += 2.5f;
+                resourceCountScript.resources += 2f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2");
                 }
             }
 
             if (wormLevel.text == "Level 5")
-            {
-                resourceCountScript.resources += 3f;
-
-                if (FloatingTextPrefab != null)
-                {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3");
-                }
-            }
-
-            if (wormLevel.text == "Level 6")
-            {
-                resourceCountScript.resources += 3.5f;
-
-                if (FloatingTextPrefab != null)
-                {
-                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3.5");
-                }
-            }
-
-            if (wormLevel.text == "Level 7")
             {
                 resourceCountScript.resources += 4f;
 
@@ -167,6 +145,28 @@ public class WormIdleStation : MonoBehaviour
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
                     text.GetComponent<TMPro.TextMeshPro>().SetText("+4");
+                }
+            }
+
+            if (wormLevel.text == "Level 6")
+            {
+                resourceCountScript.resources += 16f;
+
+                if (FloatingTextPrefab != null)
+                {
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+16");
+                }
+            }
+
+            if (wormLevel.text == "Level 7")
+            {
+                resourceCountScript.resources += 55f;
+
+                if (FloatingTextPrefab != null)
+                {
+                    var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wheelbarrow").transform.position + new Vector3(-1.3f, 2.4f, 0f), Quaternion.identity);
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+55");
                 }
             }
 

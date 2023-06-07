@@ -24,9 +24,9 @@ public class GooseHexBuild : MonoBehaviour
 
     public void BuildHexGoose()
     {
-        if (resourceCountScript.resources >= 30 && !GooseWater.activeSelf && gooseLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 3650 && !GooseWater.activeSelf && gooseLevel.text == "Level 1")
         {
-            resourceCountScript.resources -= 30;
+            resourceCountScript.resources -= 3650;
 
             GooseWater.SetActive(true);
 

@@ -28,10 +28,12 @@ public class BuildMechanicBeaver : MonoBehaviour
 
     public void BuildBeaver()
     {
-        if (resourceCountScript.resources >= 0 && FrogWater.activeSelf && beaverLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 450 && FrogWater.activeSelf && beaverLevel.text == "Level 0")
         {
+            resourceCountScript.resources -= 450;
+
             beaverLevel.text = "Level 1";
-            beaverRequirement.text = "30 Resources to build idle station";
+            beaverRequirement.text = "2230 Resources to build idle station";
 
             Destroy(GameObject.Find("Beaver").GetComponent<BeaverInteraction>().text2);
             GameObject.Find("Beaver").GetComponent<BeaverInteraction>().levelPrefabLimit = 0;
@@ -39,9 +41,9 @@ public class BuildMechanicBeaver : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 30 && !BeaverStation.activeSelf && beaverLevel.text == "Level 1")
+        if (resourceCountScript.resources >= 2230 && !BeaverStation.activeSelf && beaverLevel.text == "Level 1")
         {
-            resourceCountScript.resources -= 30;
+            resourceCountScript.resources -= 2230;
 
             BeaverStation.SetActive(true);
             BeaverHex.SetActive(true);

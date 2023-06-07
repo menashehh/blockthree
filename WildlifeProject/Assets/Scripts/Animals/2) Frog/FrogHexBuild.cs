@@ -1,4 +1,4 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,9 +26,9 @@ public class FrogHexBuild : MonoBehaviour
 
     public void BuildHexFrog()
     {
-        if (resourceCountScript.resources >= 10 && !FrogWater.activeSelf)
+        if (resourceCountScript.resources >= 150 && !FrogWater.activeSelf)
         {
-            resourceCountScript.resources -= 10;
+            resourceCountScript.resources -= 150;
 
             FrogWater.SetActive(true);
 
@@ -39,9 +39,9 @@ public class FrogHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 90 && !FrogTree.activeSelf)
+        if (resourceCountScript.resources >= 375 && !FrogTree.activeSelf)
         {
-            resourceCountScript.resources -= 90;
+            resourceCountScript.resources -= 375;
 
             FrogTree.SetActive(true);
 
@@ -52,9 +52,9 @@ public class FrogHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 810 && !FrogGrass.activeSelf)
+        if (resourceCountScript.resources >= 700 && !FrogGrass.activeSelf)
         {
-            resourceCountScript.resources -= 810;
+            resourceCountScript.resources -= 700;
 
             FrogGrass.SetActive(true);
 

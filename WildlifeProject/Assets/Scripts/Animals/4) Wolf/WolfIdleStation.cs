@@ -41,23 +41,23 @@ public class WolfIdleStation : MonoBehaviour
         {
             if (wolfLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 1.7f;
+                resourceCountScript.resources += 125f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wolf House").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+125");
                 }
             }
 
             if (wolfLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 2.7f;
+                resourceCountScript.resources += 225f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wolf House").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+225");
                 }
             }
         }
@@ -72,12 +72,12 @@ public class WolfIdleStation : MonoBehaviour
         {
             if (wolfLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 1.5f;
+                resourceCountScript.resources += 80f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wolf House").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+80");
                 }
             }
 

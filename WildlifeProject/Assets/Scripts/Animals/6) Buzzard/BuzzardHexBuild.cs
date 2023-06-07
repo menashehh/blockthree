@@ -37,9 +37,9 @@ public class BuzzardHexBuild : MonoBehaviour
 
     public void BuildHexBuzzard()
     {
-        if (resourceCountScript.resources >= 10 && !BuzzardReq.activeSelf)
+        if (resourceCountScript.resources >= 650 && !BuzzardReq.activeSelf)
         {
-            resourceCountScript.resources -= 10;
+            resourceCountScript.resources -= 650;
 
             BuzzardReq.SetActive(true);
 
@@ -62,9 +62,9 @@ public class BuzzardHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 90 && !BuzzardGrass.activeSelf)
+        if (resourceCountScript.resources >= 1560 && !BuzzardGrass.activeSelf)
         {
-            resourceCountScript.resources -= 90;
+            resourceCountScript.resources -= 1560;
 
             BuzzardGrass.SetActive(true);
 

@@ -26,9 +26,9 @@ public class SparrowHexBuild : MonoBehaviour
 
     public void BuildHexSparrow()
     {
-        if (resourceCountScript.resources >= 30 && !SparrowWater.activeSelf)
+        if (resourceCountScript.resources >= 550 && !SparrowWater.activeSelf)
         {
-            resourceCountScript.resources -= 30;
+            resourceCountScript.resources -= 550;
 
             SparrowWater.SetActive(true);
 
@@ -39,9 +39,9 @@ public class SparrowHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 90 && !SparrowGrass.activeSelf)
+        if (resourceCountScript.resources >= 1670 && !SparrowGrass.activeSelf)
         {
-            resourceCountScript.resources -= 90;
+            resourceCountScript.resources -= 1670;
 
             SparrowGrass.SetActive(true);
 

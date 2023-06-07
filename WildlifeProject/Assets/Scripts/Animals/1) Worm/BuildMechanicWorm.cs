@@ -94,7 +94,7 @@ public class BuildMechanicWorm : MonoBehaviour
         if (resourceCountScript.resources >= 0 && waterWorm.activeSelf && wormLevel.text == "Level 2")
         {
             wormLevel.text = "Level 3";
-            wormRequirement.text = "Water (Frog) + 90 Resources";
+            wormRequirement.text = "Water (Frog) + 105 Resources";
 
             Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
             GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
@@ -102,9 +102,9 @@ public class BuildMechanicWorm : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 90 && FrogWater.activeSelf && wormLevel.text == "Level 3")
+        if (resourceCountScript.resources >= 105 && FrogWater.activeSelf && wormLevel.text == "Level 3")
         {
-            resourceCountScript.resources -= 90;
+            resourceCountScript.resources -= 105;
 
             wormLevel.text = "Level 4";
             wormRequirement.text = "Tree";
@@ -120,7 +120,7 @@ public class BuildMechanicWorm : MonoBehaviour
         if (resourceCountScript.resources >= 0 && treeWorm.activeSelf && wormLevel.text == "Level 4")
         {
             wormLevel.text = "Level 5";
-            wormRequirement.text = "Buttercup + apple + 810 Resources";
+            wormRequirement.text = "Buttercup + apple + 2460 Resources";
 
             Destroy(GameObject.Find("Worm").GetComponent<WormInteraction>().text2);
             GameObject.Find("Worm").GetComponent<WormInteraction>().levelPrefabLimit = 0;
@@ -128,9 +128,9 @@ public class BuildMechanicWorm : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 810 && AppleFly.activeSelf && !buttercup.activeSelf && wormLevel.text == "Level 5")
+        if (resourceCountScript.resources >= 2460 && AppleFly.activeSelf && !buttercup.activeSelf && wormLevel.text == "Level 5")
         {
-            resourceCountScript.resources -= 810;
+            resourceCountScript.resources -= 2460;
 
             buttercup.SetActive(true);
 

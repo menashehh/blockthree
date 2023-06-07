@@ -24,9 +24,9 @@ public class BeaverHexBuild : MonoBehaviour
 
     public void BuildHexBeaver()
     {
-        if (resourceCountScript.resources >= 90 && !BeaverTree.activeSelf && beaverLevel.text == "Level 2")
+        if (resourceCountScript.resources >= 4690 && !BeaverTree.activeSelf && beaverLevel.text == "Level 2")
         {
-            resourceCountScript.resources -= 90;
+            resourceCountScript.resources -= 4690;
 
             BeaverTree.SetActive(true);
 

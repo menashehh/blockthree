@@ -323,5 +323,14 @@ public class EscButton : MonoBehaviour
 
             return;
         }
+
+        if (GameObject.Find("Restrict Button"))
+        {
+            GameObject.Find("Restrict Button").SetActive(false);
+
+            GameObject.Find("LotCenter1").GetComponent<LotCount>().restrictLimit = 1;
+
+            return;
+        }
     }
 }

@@ -41,45 +41,45 @@ public class FrogIdleStation : MonoBehaviour
         {
             if (frogLevel.text == "Level 2")
             {
-                resourceCountScript.resources += 1.7f;
+                resourceCountScript.resources += 3f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3");
                 }
             }
 
             if (frogLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 2.7f;
+                resourceCountScript.resources += 6f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+6");
                 }
             }
 
             if (frogLevel.text == "Level 4")
             {
-                resourceCountScript.resources += 3.7f;
+                resourceCountScript.resources += 9f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+9");
                 }
             }
 
             if (frogLevel.text == "Level 5")
             {
-                resourceCountScript.resources += 4.7f;
+                resourceCountScript.resources += 12f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+4.7");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+12");
                 }
             }
         }
@@ -94,34 +94,34 @@ public class FrogIdleStation : MonoBehaviour
         {
             if (frogLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 1.5f;
+                resourceCountScript.resources += 5f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+1.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+5");
                 }
             }
 
             if (frogLevel.text == "Level 4")
             {
-                resourceCountScript.resources += 2.5f;
+                resourceCountScript.resources += 10f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+2.5");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+10");
                 }
             }
 
             if (frogLevel.text == "Level 5")
             {
-                resourceCountScript.resources += 3f;
+                resourceCountScript.resources += 15f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Lilypad").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+3");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+15");
                 }
             }
 

@@ -36,8 +36,10 @@ public class BuildMechanicGoose : MonoBehaviour
 
     public void BuildGoose()
     {
-        if (resourceCountScript.resources >= 0 && BeaverDam.activeSelf && gooseLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 1500 && BeaverDam.activeSelf && gooseLevel.text == "Level 0")
         {
+            resourceCountScript.resources -= 1500;
+
             GooseStation.SetActive(true);
             GooseHex.SetActive(true);
 

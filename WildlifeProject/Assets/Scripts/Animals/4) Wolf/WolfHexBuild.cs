@@ -25,9 +25,9 @@ public class WolfHexBuild : MonoBehaviour
 
     public void BuildHexWolf()
     {
-        if (resourceCountScript.resources >= 10 && !bone.activeSelf)
+        if (resourceCountScript.resources >= 4560 && !bone.activeSelf)
         {
-            resourceCountScript.resources -= 10;
+            resourceCountScript.resources -= 4560;
 
             bone.SetActive(true);
 
@@ -38,9 +38,9 @@ public class WolfHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 90 && !wolfTree.activeSelf)
+        if (resourceCountScript.resources >= 19800 && !wolfTree.activeSelf)
         {
-            resourceCountScript.resources -= 90;
+            resourceCountScript.resources -= 19800;
 
             wolfTree.SetActive(true);
 

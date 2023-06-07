@@ -28,9 +28,9 @@ public class BuildMechanicBee : MonoBehaviour
 
     public void BuildBee()
     {
-        if (resourceCountScript.resources >= 10 && !BeeStation.activeSelf && beeLevel.text == "Level 0")
+        if (resourceCountScript.resources >= 6820 && !BeeStation.activeSelf && beeLevel.text == "Level 0")
         {
-            resourceCountScript.resources -= 10;
+            resourceCountScript.resources -= 6820;
 
             BeeStation.SetActive(true);
             BeeHex.SetActive(true);
@@ -47,7 +47,7 @@ public class BuildMechanicBee : MonoBehaviour
         if (resourceCountScript.resources >= 0 && BeeTree.activeSelf && beeLevel.text == "Level 1")
         {
             beeLevel.text = "Level 2";
-            beeRequirement.text = "Frog Level 4";
+            beeRequirement.text = "Frog Level 4 + 69420 Res";
 
             Destroy(GameObject.Find("Bee").GetComponent<BeeInteraction>().text2);
             GameObject.Find("Bee").GetComponent<BeeInteraction>().levelPrefabLimit = 0;
@@ -55,8 +55,10 @@ public class BuildMechanicBee : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 0 && beeLevel.text == "Level 2" && (frogLevel.text == "Level 4" || frogLevel.text == "Level 5"))
+        if (resourceCountScript.resources >= 69420 && beeLevel.text == "Level 2" && (frogLevel.text == "Level 4" || frogLevel.text == "Level 5"))
         {
+            resourceCountScript.resources -= 69420;
+
             MaximumLevel.Play();
 
             beeLevel.text = "Level 3";
