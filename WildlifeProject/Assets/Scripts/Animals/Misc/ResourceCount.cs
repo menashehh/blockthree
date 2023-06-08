@@ -10,6 +10,6 @@ public class ResourceCount : MonoBehaviour
 
     private void Update()
     {
-        resourceText.text = "" + resources.ToString("n1", System.Globalization.CultureInfo.CreateSpecificCulture("de-DE"));
+        resourceText.text = "" + resources; // ToString("n1", System.Globalization.CultureInfo.CreateSpecificCulture("de-DE"));
     }
 }
