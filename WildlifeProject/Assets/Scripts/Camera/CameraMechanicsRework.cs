@@ -28,17 +28,17 @@ public class CameraMechanicsRework : MonoBehaviour
     private int cameraToggle = 1;
     public float speed = 2f;
 
-    private int cameraDragSpeed = 20;
+    private int cameraDragSpeed = 60;
 
-    float minFov = 60f;
-    float maxFov = 100f;
-    float sensitivity = 20f;
+    float minFov = 30f;
+    float maxFov = 80f;
+    float sensitivity = 70f;
 
     private void Awake()
     {
         Camera.main.transform.rotation = Quaternion.Euler(0, 0, 0);
         Camera.main.transform.position = new Vector3(-4.87f, 0.23f, -4.17f);
-        Camera.main.fieldOfView = 100f;
+        Camera.main.fieldOfView = 80f;
     }
 
     private void Start()
@@ -213,12 +213,12 @@ public class CameraMechanicsRework : MonoBehaviour
 
             if (Camera.main.fieldOfView < minFov)
             {
-                Camera.main.fieldOfView = 80f;
+                Camera.main.fieldOfView = 45f;
             }
             else
             if (Camera.main.fieldOfView > maxFov)
             {
-                Camera.main.fieldOfView = 100f;
+                Camera.main.fieldOfView = 80f;
             }
         }
     }
@@ -257,7 +257,7 @@ public class CameraMechanicsRework : MonoBehaviour
             {
                 cameraToggle = 1;
                 CameraButtonText.text = "Drag";
-                Camera.main.fieldOfView = 100f;
+                Camera.main.fieldOfView = 80f;
                 transform.LookAt(myGameObj.transform.position);
                 Camera.main.transform.rotation = Quaternion.Euler(41, -4, 0);
             }
@@ -265,7 +265,7 @@ public class CameraMechanicsRework : MonoBehaviour
             {
                 cameraToggle = 0;
                 CameraButtonText.text = "Rotate";
-                Camera.main.fieldOfView = 100f;
+                Camera.main.fieldOfView = 80f;
                 //Camera.main.transform.position = myGameObj.transform.position + new Vector3(2, 4, 4);
                 //Camera.main.transform.position = new Vector3(-4.87f, 0.23f, -4.17f);
                 transform.LookAt(myGameObj.transform.position);
