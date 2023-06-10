@@ -28,7 +28,7 @@ public class CameraMechanicsRework : MonoBehaviour
     private int cameraToggle = 1;
     public float speed = 2f;
 
-    private int cameraDragSpeed = 60;
+    private int cameraDragSpeed = 20;
 
     float minFov = 30f;
     float maxFov = 80f;
