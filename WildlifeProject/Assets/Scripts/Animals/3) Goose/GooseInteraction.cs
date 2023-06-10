@@ -36,7 +36,7 @@ public class GooseInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
+        if (GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && Camera.main.fieldOfView <= 65f && !GameObject.Find("Background")
              && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
              && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
              && !GameObject.Find("Hex Button Goose")
@@ -57,15 +57,15 @@ public class GooseInteraction : MonoBehaviour
     {
         if (!GameObject.Find("Background") && GameObject.Find("gooseText") && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f)
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 65f)
             {
                 npcName = true;
                 gooseSFX.Play();
             }
 
-            if (menuOpen == 1 && Camera.main.fieldOfView <= 80f) npcName = false;
+            if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;
 
-            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView <= 80f) menuOpen++;
+            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView <= 65f) menuOpen++;
 
             HighlightScript.ToggleHighlight(false);
         }
@@ -89,7 +89,7 @@ public class GooseInteraction : MonoBehaviour
 
         if (!GameObject.Find("Background") && gooseLevel.text != "Level 2")
         {
-            if (npcName == false && Camera.main.fieldOfView <= 80f)
+            if (npcName == false && Camera.main.fieldOfView <= 65f)
             {
                 guiStyle.fontSize = 75;
                 GUI.Label(new Rect(position.x - 35, Screen.height - position.y - 100, textSize.x, textSize.y), "!", guiStyle);
@@ -100,7 +100,7 @@ public class GooseInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView <= 80f && !GameObject.Find("Background"))
+        if (npcName == true && Camera.main.fieldOfView <= 65f && !GameObject.Find("Background"))
         {
             BuildButtonGoose.SetActive(true);
         }
@@ -114,7 +114,7 @@ public class GooseInteraction : MonoBehaviour
             menuOpen = 0;
         }
 
-        if (!GameObject.Find("Background") && gooseLevel.text != "Level 2" && Camera.main.fieldOfView <= 80f && npcName == false)
+        if (!GameObject.Find("Background") && gooseLevel.text != "Level 2" && Camera.main.fieldOfView <= 65f && npcName == false)
         {
             if (prefabLimit != 1)
             {
@@ -128,7 +128,7 @@ public class GooseInteraction : MonoBehaviour
             prefabLimit = 0;
         }
 
-        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 80f)
+        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 65f)
         {
             if (levelPrefabLimit != 1)
             {

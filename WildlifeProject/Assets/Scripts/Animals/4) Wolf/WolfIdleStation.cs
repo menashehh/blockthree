@@ -27,7 +27,7 @@ public class WolfIdleStation : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView <= 80f && GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && !EventSystem.current.IsPointerOverGameObject()) HighlightScript.ToggleHighlight(true);
+        if (Camera.main.fieldOfView <= 65f && GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && !EventSystem.current.IsPointerOverGameObject()) HighlightScript.ToggleHighlight(true);
     }
 
     private void OnMouseExit()
@@ -37,7 +37,7 @@ public class WolfIdleStation : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background") && !EventSystem.current.IsPointerOverGameObject())
+        if (Camera.main.fieldOfView <= 65f && !GameObject.Find("Background") && !EventSystem.current.IsPointerOverGameObject())
         {
             if (wolfLevel.text == "Level 2")
             {
@@ -72,12 +72,12 @@ public class WolfIdleStation : MonoBehaviour
         {
             if (wolfLevel.text == "Level 3")
             {
-                resourceCountScript.resources += 80f;
+                resourceCountScript.resources += 65f;
 
                 if (FloatingTextPrefab != null)
                 {
                     var text = Instantiate(FloatingTextPrefab, GameObject.Find("Wolf House").transform.position + new Vector3(0f, 1.3f, 0f), Quaternion.identity);
-                    text.GetComponent<TMPro.TextMeshPro>().SetText("+80");
+                    text.GetComponent<TMPro.TextMeshPro>().SetText("+65");
                 }
             }
 

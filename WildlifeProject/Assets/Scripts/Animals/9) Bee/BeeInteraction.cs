@@ -36,7 +36,7 @@ public class BeeInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && Camera.main.fieldOfView <= 80f && !GameObject.Find("Background")
+        if (GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && Camera.main.fieldOfView <= 65f && !GameObject.Find("Background")
             && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
             && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
             && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")
@@ -57,15 +57,15 @@ public class BeeInteraction : MonoBehaviour
     {
         if (!GameObject.Find("Background") && GameObject.Find("beeText") && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f)
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 65f)
             {
                 npcName = true;
                 beeSFX.Play();
             }
 
-            if (menuOpen == 1 && Camera.main.fieldOfView <= 80f) npcName = false;
+            if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;
 
-            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView <= 80f) menuOpen++;
+            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView <= 65f) menuOpen++;
 
             HighlightScript.ToggleHighlight(false);
         }
@@ -90,7 +90,7 @@ public class BeeInteraction : MonoBehaviour
 
         if (!GameObject.Find("Background") && beeLevel.text != "Level 3")
         {
-            if (Camera.main.fieldOfView <= 80f && npcName == false)
+            if (Camera.main.fieldOfView <= 65f && npcName == false)
             {
                 guiStyle.fontSize = 75;
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 210, textSize.x, textSize.y), "!", guiStyle);
@@ -101,7 +101,7 @@ public class BeeInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (npcName == true && Camera.main.fieldOfView <= 80f && !GameObject.Find("Background"))
+        if (npcName == true && Camera.main.fieldOfView <= 65f && !GameObject.Find("Background"))
         {
             BuildButtonBee.SetActive(true);
         }
@@ -115,7 +115,7 @@ public class BeeInteraction : MonoBehaviour
             menuOpen = 0;
         }
 
-        if (!GameObject.Find("Background") && beeLevel.text != "Level 3" && Camera.main.fieldOfView <= 80f && npcName == false)
+        if (!GameObject.Find("Background") && beeLevel.text != "Level 3" && Camera.main.fieldOfView <= 65f && npcName == false)
         {
             if (prefabLimit != 1)
             {
@@ -129,7 +129,7 @@ public class BeeInteraction : MonoBehaviour
             prefabLimit = 0;
         }
 
-        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 80f)
+        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 65f)
         {
             if (levelPrefabLimit != 1)
             {

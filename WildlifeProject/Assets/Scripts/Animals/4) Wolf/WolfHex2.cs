@@ -16,16 +16,16 @@ public class WolfHex2 : MonoBehaviour
 
     private void Update()
     {
-        if (menuOpen == 1 && Camera.main.fieldOfView <= 80f && !GameObject.Find("Tree Wolf"))
+        if (menuOpen == 1 && Camera.main.fieldOfView <= 65f && !GameObject.Find("Tree Wolf"))
         {
             HexButtonWolf2.SetActive(true);
         }
         else HexButtonWolf2.SetActive(false);
 
-        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
+        if (Camera.main.fieldOfView <= 65f && !GameObject.Find("Background") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
         EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons")) menuOpen = 0;
 
-        if (!GameObject.Find("Background") && !GameObject.Find("Tree Wolf") && Camera.main.fieldOfView <= 80f && menuOpen == 0)
+        if (!GameObject.Find("Background") && !GameObject.Find("Tree Wolf") && Camera.main.fieldOfView <= 65f && menuOpen == 0)
         {
             if (prefabLimit != 1)
             {
@@ -50,7 +50,7 @@ public class WolfHex2 : MonoBehaviour
 
         if (!GameObject.Find("Background") && !GameObject.Find("Tree Wolf"))
         {
-            if (Camera.main.fieldOfView <= 80f && menuOpen == 0)
+            if (Camera.main.fieldOfView <= 65f && menuOpen == 0)
             {
                 GUI.Label(new Rect(position.x + 10, Screen.height - position.y - 100, textSize.x, textSize.y), "!", guiStyle);
             }
@@ -60,7 +60,7 @@ public class WolfHex2 : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background") && !EventSystem.current.IsPointerOverGameObject()
+        if (Camera.main.fieldOfView <= 65f && !GameObject.Find("Background") && !EventSystem.current.IsPointerOverGameObject()
             && !GameObject.Find("wormText") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
             && !GameObject.Find("frogText") && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
             && !GameObject.Find("gooseText") && !GameObject.Find("Hex Button Goose")
@@ -71,13 +71,13 @@ public class WolfHex2 : MonoBehaviour
             && !GameObject.Find("flyText") && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
             && !GameObject.Find("beeText") && !GameObject.Find("Hex Button Bee"))
         {
-            if (menuOpen == 0 && Camera.main.fieldOfView <= 80f)
+            if (menuOpen == 0 && Camera.main.fieldOfView <= 65f)
             {
                 menuOpen = 1;
                 return;
             }
 
-            if (menuOpen == 1 && Camera.main.fieldOfView <= 80f)
+            if (menuOpen == 1 && Camera.main.fieldOfView <= 65f)
             {
                 menuOpen = 0;
                 return;

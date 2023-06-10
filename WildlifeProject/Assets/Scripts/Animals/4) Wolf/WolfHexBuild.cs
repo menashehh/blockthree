@@ -38,9 +38,9 @@ public class WolfHexBuild : MonoBehaviour
             return;
         }
 
-        if (resourceCountScript.resources >= 19800 && !wolfTree.activeSelf)
+        if (resourceCountScript.resources >= 19650 && !wolfTree.activeSelf)
         {
-            resourceCountScript.resources -= 19800;
+            resourceCountScript.resources -= 19650;
 
             wolfTree.SetActive(true);
 

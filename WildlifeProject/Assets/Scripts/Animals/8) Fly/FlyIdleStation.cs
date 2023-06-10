@@ -27,7 +27,7 @@ public class FlyIdleStation : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (Camera.main.fieldOfView <= 80f && GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && !EventSystem.current.IsPointerOverGameObject()) HighlightScript.ToggleHighlight(true);
+        if (Camera.main.fieldOfView <= 65f && GameObject.Find("LotCenter1").GetComponent<ButtonDown>().holdTimer <= 0.001 && !EventSystem.current.IsPointerOverGameObject()) HighlightScript.ToggleHighlight(true);
     }
 
     private void OnMouseExit()
@@ -37,7 +37,7 @@ public class FlyIdleStation : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (Camera.main.fieldOfView <= 80f && !GameObject.Find("Background") && !EventSystem.current.IsPointerOverGameObject())
+        if (Camera.main.fieldOfView <= 65f && !GameObject.Find("Background") && !EventSystem.current.IsPointerOverGameObject())
         {
             if (flyLevel.text == "Level 2")
             {

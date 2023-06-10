@@ -28,7 +28,7 @@ public class CameraMechanicsRework : MonoBehaviour
     private int cameraToggle = 1;
     public float speed = 2f;
 
-    private int cameraDragSpeed = 20;
+    private int cameraDragSpeed = 60;
 
     float minFov = 30f;
     float maxFov = 80f;
@@ -38,7 +38,7 @@ public class CameraMechanicsRework : MonoBehaviour
     {
         Camera.main.transform.rotation = Quaternion.Euler(0, 0, 0);
         Camera.main.transform.position = new Vector3(-4.87f, 0.23f, -4.17f);
-        Camera.main.fieldOfView = 80f;
+        Camera.main.fieldOfView = 65f;
     }
 
     private void Start()
