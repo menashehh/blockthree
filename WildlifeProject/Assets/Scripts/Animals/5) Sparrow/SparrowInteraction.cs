@@ -61,6 +61,8 @@ public class SparrowInteraction : MonoBehaviour
             {
                 npcName = true;
                 sparrowSFX.Play();
+
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(-10.06f, 0.23f, 5.65f);
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;

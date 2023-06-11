@@ -61,6 +61,8 @@ public class BeeInteraction : MonoBehaviour
             {
                 npcName = true;
                 beeSFX.Play();
+
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(-15.82f, 0.23f, 15.25f);
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;

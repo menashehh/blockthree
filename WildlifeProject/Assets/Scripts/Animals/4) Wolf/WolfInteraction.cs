@@ -61,6 +61,8 @@ public class WolfInteraction : MonoBehaviour
             {
                 npcName = true;
                 wolfSFX.Play();
+
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(7.00f, 0.23f, 4.41f);
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;

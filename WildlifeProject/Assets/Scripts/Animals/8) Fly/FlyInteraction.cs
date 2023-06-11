@@ -61,6 +61,8 @@ public class FlyInteraction : MonoBehaviour
             {
                 npcName = true;
                 flySFX.Play();
+
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(-5.08f, 0.23f, 8.14f);
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;

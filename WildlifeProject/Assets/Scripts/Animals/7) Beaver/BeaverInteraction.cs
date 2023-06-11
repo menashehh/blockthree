@@ -61,6 +61,8 @@ public class BeaverInteraction : MonoBehaviour
             {
                 npcName = true;
                 beaverSFX.Play();
+
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(-0.04f, 0.23f, 17.39f);
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;

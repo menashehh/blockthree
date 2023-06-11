@@ -25,7 +25,7 @@ public class CameraMechanicsRework : MonoBehaviour
     public Collider beeCollider;
 
     float TouchZoomSpeed = 0.1f;
-    private int cameraToggle = 1;
+    public int cameraToggle = 1;
     public float speed = 2f;
 
     private int cameraDragSpeed = 60;

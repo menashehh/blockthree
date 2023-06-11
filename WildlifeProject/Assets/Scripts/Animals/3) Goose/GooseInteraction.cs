@@ -61,6 +61,8 @@ public class GooseInteraction : MonoBehaviour
             {
                 npcName = true;
                 gooseSFX.Play();
+
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(3.29f, 0.23f, 7.42f);
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;

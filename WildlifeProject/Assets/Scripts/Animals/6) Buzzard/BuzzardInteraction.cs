@@ -61,6 +61,8 @@ public class BuzzardInteraction : MonoBehaviour
             {
                 npcName = true;
                 buzzardSFX.Play();
+
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(-6.29f, 0.23f, 15.54f);
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;
