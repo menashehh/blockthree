@@ -49,7 +49,7 @@ public class CameraMechanicsRework : MonoBehaviour
 
     private void Update()
     {
-        if (!GameObject.Find("Background"))
+        if (!GameObject.Find("Background") && !GameObject.Find("BackgroundOverlay"))
         {
             // CAMERA ROTATE
             if (cameraToggle == 0 && (Input.GetMouseButton(0) || Input.touchCount == 1))
@@ -240,7 +240,7 @@ public class CameraMechanicsRework : MonoBehaviour
     // TOGGLE SCRIPT FOR BUTTON
     public void ToggleCameraMode()
     {
-        if (!GameObject.Find("Background") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
+        if (!GameObject.Find("Background") && !GameObject.Find("BackgroundOverlay") && !GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
                     && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
                     && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
                     && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
