@@ -62,7 +62,11 @@ public class SparrowInteraction : MonoBehaviour
                 npcName = true;
                 sparrowSFX.Play();
 
-                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(-10.06f, 0.23f, 5.65f);
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1)
+                {
+                    Camera.main.transform.position = new Vector3(-10.06f, 0.23f, 5.65f);
+                    ZoomInBool = true;
+                }
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;
@@ -80,6 +84,16 @@ public class SparrowInteraction : MonoBehaviour
             sparrowText.SetActive(false);
             HighlightScript.ToggleHighlight(false);
         }
+    }
+
+    private bool ZoomInBool = false;
+    private bool ZoomOutBool = false;
+    private float velocity = 0f;
+    private float smoothTime = 0.25f;
+
+    private void Zoom(float fov)
+    {
+        Camera.main.fieldOfView = Mathf.SmoothDamp(Camera.main.fieldOfView, fov, ref velocity, smoothTime);
     }
 
     /*
@@ -115,6 +129,25 @@ public class SparrowInteraction : MonoBehaviour
             sparrowText.SetActive(false);
             npcName = false;
             menuOpen = 0;
+            ZoomOutBool = true;
+        }
+
+        if (ZoomInBool == true)
+        {
+            Zoom(20);
+            if ((Camera.main.fieldOfView >= 19 && Camera.main.fieldOfView <= 21) || ZoomOutBool == true)
+            {
+                ZoomInBool = false;
+            }
+        }
+
+        if (ZoomOutBool == true)
+        {
+            Zoom(45);
+            if ((Camera.main.fieldOfView >= 44 && Camera.main.fieldOfView <= 46) || ZoomInBool == true)
+            {
+                ZoomOutBool = false;
+            }
         }
 
         if (!GameObject.Find("Background") && sparrowLevel.text != "Level 4" && Camera.main.fieldOfView <= 65f && npcName == false)

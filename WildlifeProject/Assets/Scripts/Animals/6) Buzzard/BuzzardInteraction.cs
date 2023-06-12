@@ -61,8 +61,12 @@ public class BuzzardInteraction : MonoBehaviour
             {
                 npcName = true;
                 buzzardSFX.Play();
-
-                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(-6.29f, 0.23f, 15.54f);
+               
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1)
+                {
+                    Camera.main.transform.position = new Vector3(-6.44f, 0.23f, 15.04f);
+                    ZoomInBool = true;
+                }
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;
@@ -80,6 +84,16 @@ public class BuzzardInteraction : MonoBehaviour
             buzzardText.SetActive(false);
             HighlightScript.ToggleHighlight(false);
         }
+    }
+
+    private bool ZoomInBool = false;
+    private bool ZoomOutBool = false;
+    private float velocity = 0f;
+    private float smoothTime = 0.25f;
+
+    private void Zoom(float fov)
+    {
+        Camera.main.fieldOfView = Mathf.SmoothDamp(Camera.main.fieldOfView, fov, ref velocity, smoothTime);
     }
 
     /*
@@ -115,6 +129,25 @@ public class BuzzardInteraction : MonoBehaviour
             buzzardText.SetActive(false);
             npcName = false;
             menuOpen = 0;
+            ZoomOutBool = true;
+        }
+
+        if (ZoomInBool == true)
+        {
+            Zoom(15);
+            if ((Camera.main.fieldOfView >= 14 && Camera.main.fieldOfView <= 16) || ZoomOutBool == true)
+            {
+                ZoomInBool = false;
+            }
+        }
+
+        if (ZoomOutBool == true)
+        {
+            Zoom(45);
+            if ((Camera.main.fieldOfView >= 44 && Camera.main.fieldOfView <= 46) || ZoomInBool == true)
+            {
+                ZoomOutBool = false;
+            }
         }
 
         if (!GameObject.Find("Background") && buzzardLevel.text != "Level 3" && Camera.main.fieldOfView <= 65f && npcName == false)

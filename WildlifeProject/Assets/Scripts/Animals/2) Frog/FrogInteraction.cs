@@ -62,12 +62,20 @@ public class FrogInteraction : MonoBehaviour
                 npcName = true;
                 frogSFX.Play();
 
-                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1) Camera.main.transform.position = new Vector3(3.09f, 0.23f, 1.67f);
+                if (Camera.main.GetComponent<CameraMechanicsRework>().cameraToggle == 1)
+                {
+                    Camera.main.transform.position = new Vector3(3.09f, 0.23f, 1.67f);
+                    ZoomInBool = true;
+                }
             }
 
             if (menuOpen == 1 && Camera.main.fieldOfView <= 65f) npcName = false;
 
-            if (menuOpen == 1) menuOpen = 0; else if (Camera.main.fieldOfView <= 65f) menuOpen++;
+            if (menuOpen == 1)
+            {
+                menuOpen = 0;
+            }
+            else if (Camera.main.fieldOfView <= 65f) menuOpen++;
 
             HighlightScript.ToggleHighlight(false);
         }
@@ -100,6 +108,15 @@ public class FrogInteraction : MonoBehaviour
         }
     }
     */
+    private bool ZoomInBool = false;
+    private bool ZoomOutBool = false;
+    private float velocity = 0f;
+    private float smoothTime = 0.25f;
+
+    private void Zoom(float fov)
+    {
+        Camera.main.fieldOfView = Mathf.SmoothDamp(Camera.main.fieldOfView, fov, ref velocity, smoothTime);
+    }
 
     private void Update()
     {
@@ -115,6 +132,25 @@ public class FrogInteraction : MonoBehaviour
             frogText.SetActive(false);
             npcName = false;
             menuOpen = 0;
+            ZoomOutBool = true;
+        }
+
+        if (ZoomInBool == true)
+        {
+            Zoom(15);
+            if ((Camera.main.fieldOfView >= 14 && Camera.main.fieldOfView <= 16) || ZoomOutBool == true)
+            {
+                ZoomInBool = false;
+            }
+        }
+
+        if (ZoomOutBool == true)
+        {
+            Zoom(45);
+            if ((Camera.main.fieldOfView >= 44 && Camera.main.fieldOfView <= 46) || ZoomInBool == true)
+            {
+                ZoomOutBool = false;
+            }
         }
 
         if (!GameObject.Find("Background") && frogLevel.text != "Level 5" && Camera.main.fieldOfView <= 65f && npcName == false)

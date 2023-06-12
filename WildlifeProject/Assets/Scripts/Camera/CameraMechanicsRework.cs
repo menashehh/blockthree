@@ -30,9 +30,9 @@ public class CameraMechanicsRework : MonoBehaviour
 
     private int cameraDragSpeed = 60;
 
-    float minFov = 30f;
+    float minFov = 10f;
     float maxFov = 80f;
-    float sensitivity = 70f;
+    float sensitivity = 40f;
 
     private void Awake()
     {
@@ -90,7 +90,7 @@ public class CameraMechanicsRework : MonoBehaviour
                 {
                     float speedDrag = cameraDragSpeed * Time.deltaTime;
                     Camera.main.transform.position -= new Vector3(Input.GetAxis("Mouse X") * speedDrag, 0, Input.GetAxis("Mouse Y") * speedDrag);
-                    Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16, 7), transform.position.y, Mathf.Clamp(transform.position.z, -8, 18));
+                    Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16, 10), transform.position.y, Mathf.Clamp(transform.position.z, -8, 18));
                     
                     myGameObj.transform.position = Camera.main.transform.position;
                 }
@@ -213,7 +213,7 @@ public class CameraMechanicsRework : MonoBehaviour
 
             if (Camera.main.fieldOfView < minFov)
             {
-                Camera.main.fieldOfView = 45f;
+                Camera.main.fieldOfView = 10f;
             }
             else
             if (Camera.main.fieldOfView > maxFov)
