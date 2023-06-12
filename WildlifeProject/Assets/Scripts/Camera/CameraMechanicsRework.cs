@@ -28,7 +28,8 @@ public class CameraMechanicsRework : MonoBehaviour
     public int cameraToggle = 1;
     public float speed = 2f;
 
-    private int cameraDragSpeed = 60;
+    private int cfov;
+    private int cameraDragSpeed = 2;
 
     float minFov = 10f;
     float maxFov = 80f;
@@ -42,13 +43,14 @@ public class CameraMechanicsRework : MonoBehaviour
     }
 
     private void Start()
-    {
+    {  
         CameraButtonText.text = "Drag";
         transform.LookAt(myGameObj.transform.position);
     }
 
     private void Update()
     {
+        cfov = (int)Camera.main.fieldOfView;
         if (!GameObject.Find("Background") && !GameObject.Find("BackgroundOverlay"))
         {
             // CAMERA ROTATE
@@ -88,7 +90,7 @@ public class CameraMechanicsRework : MonoBehaviour
                     && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
                     && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
                 {
-                    float speedDrag = cameraDragSpeed * Time.deltaTime;
+                    float speedDrag = cameraDragSpeed * cfov * Time.deltaTime;
                     Camera.main.transform.position -= new Vector3(Input.GetAxis("Mouse X") * speedDrag, 0, Input.GetAxis("Mouse Y") * speedDrag);
                     Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16, 10), transform.position.y, Mathf.Clamp(transform.position.z, -8, 18));
                     
