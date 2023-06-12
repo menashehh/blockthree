@@ -29,7 +29,7 @@ public class CameraMechanicsRework : MonoBehaviour
     public float speed = 2f;
 
     private int cfov;
-    private int cameraDragSpeed = 2;
+    public float cameraDragSpeed = 0.1f;
 
     float minFov = 10f;
     float maxFov = 80f;
@@ -43,7 +43,7 @@ public class CameraMechanicsRework : MonoBehaviour
     }
 
     private void Start()
-    {  
+    {
         CameraButtonText.text = "Drag";
         transform.LookAt(myGameObj.transform.position);
     }
@@ -78,7 +78,7 @@ public class CameraMechanicsRework : MonoBehaviour
             if (cameraToggle == 1 && (Input.GetMouseButton(0) || Input.touchCount == 1))
             {
                 if (!GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
-                    && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3") 
+                    && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
                     && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
                     && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
                     && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
@@ -93,7 +93,7 @@ public class CameraMechanicsRework : MonoBehaviour
                     float speedDrag = cameraDragSpeed * cfov * Time.deltaTime;
                     Camera.main.transform.position -= new Vector3(Input.GetAxis("Mouse X") * speedDrag, 0, Input.GetAxis("Mouse Y") * speedDrag);
                     Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16, 10), transform.position.y, Mathf.Clamp(transform.position.z, -8, 18));
-                    
+
                     myGameObj.transform.position = Camera.main.transform.position;
                 }
             }
