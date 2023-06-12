@@ -6,17 +6,10 @@ using UnityEngine.Audio;
 public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public CameraMechanicsRework CamMec;
 
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("Volume", volume);
-        Debug.Log(volume);
-    }
-
-    public void SetSens (float Sens)
-    {
-        CamMec.cameraDragSpeed = Sens;
     }
 
     public void SetQuality (int  qualityIndex)

@@ -134,7 +134,7 @@ public class FlyInteraction : MonoBehaviour
 
         if (ZoomInBool == true)
         {
-            Zoom(10);
+            Zoom(15);
             if ((Camera.main.fieldOfView >= 9 && Camera.main.fieldOfView <= 11) || ZoomOutBool == true)
             {
                 ZoomInBool = false;
