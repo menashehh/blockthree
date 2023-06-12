@@ -138,7 +138,7 @@ public class WormInteraction : MonoBehaviour
         else BuildButtonWorm.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("wormText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && Input.GetMouseButtonDown(0))
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
         {
             wormText.SetActive(false);
             npcName = false;

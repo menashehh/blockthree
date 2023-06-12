@@ -58,18 +58,32 @@ public class CameraMechanicsRework : MonoBehaviour
         // MOBILE PINCH ZOOM
         if (Input.touchCount == 2)
         {
-            Touch tZero = Input.GetTouch(0);
-            Touch tOne = Input.GetTouch(1);
+            if (!GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
+                && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
+                && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
+                && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
+                && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
+                && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("Hex Button Wolf 2")
+                && !GameObject.Find("Hex Button Goose")
+                && !GameObject.Find("Hex Button Bee")
+                && !GameObject.Find("Hex Button Beaver")
+                && !GameObject.Find("Restrict Button")
+                && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
+                && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
+            {
+                Touch tZero = Input.GetTouch(0);
+                Touch tOne = Input.GetTouch(1);
 
-            Vector2 tZeroPrevious = tZero.position - tZero.deltaPosition;
-            Vector2 tOnePrevious = tOne.position - tOne.deltaPosition;
+                Vector2 tZeroPrevious = tZero.position - tZero.deltaPosition;
+                Vector2 tOnePrevious = tOne.position - tOne.deltaPosition;
 
-            float oldTouchDistance = Vector2.Distance(tZeroPrevious, tOnePrevious);
-            float currentTouchDistance = Vector2.Distance(tZero.position, tOne.position);
+                float oldTouchDistance = Vector2.Distance(tZeroPrevious, tOnePrevious);
+                float currentTouchDistance = Vector2.Distance(tZero.position, tOne.position);
 
-            float deltaDistance = oldTouchDistance - currentTouchDistance;
-            Zoom(deltaDistance, TouchZoomSpeed);
-            pinch = true;
+                float deltaDistance = oldTouchDistance - currentTouchDistance;
+                Zoom(deltaDistance, TouchZoomSpeed);
+                pinch = true;
+            }
         }
         else if (cameraToggle == 1 && (Input.GetMouseButton(0) || Input.touchCount == 1) && !GameObject.Find("Background") && !GameObject.Find("BackgroundOverlay"))
         {
