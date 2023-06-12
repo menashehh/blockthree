@@ -26,10 +26,11 @@ public class CameraMechanicsRework : MonoBehaviour
 
     float TouchZoomSpeed = 0.1f;
     public int cameraToggle = 1;
-    public float speed = 2f;
+    public float speed = 0.1f;
+    private bool pinch = false;
 
     private int cfov;
-    public float cameraDragSpeed = 0.1f;
+    public float cameraDragSpeed = 2;
 
     float minFov = 10f;
     float maxFov = 80f;
@@ -51,44 +52,45 @@ public class CameraMechanicsRework : MonoBehaviour
     private void Update()
     {
         cfov = (int)Camera.main.fieldOfView;
-        if (!GameObject.Find("Background") && !GameObject.Find("BackgroundOverlay"))
-        {
-            // CAMERA ROTATE
-            if (cameraToggle == 0 && (Input.GetMouseButton(0) || Input.touchCount == 1))
-            {
-                if (!GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
-                    && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
-                    && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
-                    && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
-                    && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
-                    && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("Hex Button Wolf 2")
-                    && !GameObject.Find("Hex Button Goose")
-                    && !GameObject.Find("Hex Button Bee")
-                    && !GameObject.Find("Hex Button Beaver")
-                    && !GameObject.Find("Restrict Button")
-                    && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
-                    && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
-                {
-                    //cameraObj.transform.RotateAround(myGameObj.transform.position, cameraObj.transform.up, -Input.GetAxis("Mouse X") * speed);
-                    transform.RotateAround(myGameObj.transform.position, Vector3.up, -Input.GetAxis("Mouse X") * speed);
-                }
-            }
 
-            // CAMERA DRAG
-            if (cameraToggle == 1 && (Input.GetMouseButton(0) || Input.touchCount == 1))
+
+        // CAMERA DRAG
+        // MOBILE PINCH ZOOM
+        if (Input.touchCount == 2)
+        {
+            Touch tZero = Input.GetTouch(0);
+            Touch tOne = Input.GetTouch(1);
+
+            Vector2 tZeroPrevious = tZero.position - tZero.deltaPosition;
+            Vector2 tOnePrevious = tOne.position - tOne.deltaPosition;
+
+            float oldTouchDistance = Vector2.Distance(tZeroPrevious, tOnePrevious);
+            float currentTouchDistance = Vector2.Distance(tZero.position, tOne.position);
+
+            float deltaDistance = oldTouchDistance - currentTouchDistance;
+            Zoom(deltaDistance, TouchZoomSpeed);
+            pinch = true;
+        }
+        else if (cameraToggle == 1 && (Input.GetMouseButton(0) || Input.touchCount == 1) && !GameObject.Find("Background") && !GameObject.Find("BackgroundOverlay"))
+        {
+            if (!GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
+                && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
+                && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
+                && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
+                && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
+                && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("Hex Button Wolf 2")
+                && !GameObject.Find("Hex Button Goose")
+                && !GameObject.Find("Hex Button Bee")
+                && !GameObject.Find("Hex Button Beaver")
+                && !GameObject.Find("Restrict Button")
+                && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
+                && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
             {
-                if (!GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
-                    && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
-                    && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
-                    && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
-                    && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
-                    && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("Hex Button Wolf 2")
-                    && !GameObject.Find("Hex Button Goose")
-                    && !GameObject.Find("Hex Button Bee")
-                    && !GameObject.Find("Hex Button Beaver")
-                    && !GameObject.Find("Restrict Button")
-                    && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
-                    && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
+                if (pinch == true)
+                {
+                    pinch = false;
+                }
+                else
                 {
                     float speedDrag = cameraDragSpeed * cfov * Time.deltaTime;
                     Camera.main.transform.position -= new Vector3(Input.GetAxis("Mouse X") * speedDrag, 0, Input.GetAxis("Mouse Y") * speedDrag);
@@ -97,132 +99,168 @@ public class CameraMechanicsRework : MonoBehaviour
                     myGameObj.transform.position = Camera.main.transform.position;
                 }
             }
-
-            // CAMERA ZOOM
-            var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (GameObject.Find("Restrict Button")) return;
-
-            if (GameObject.Find("Build Button Worm") || GameObject.Find("Hex Button Worm") || GameObject.Find("Hex Button Worm 2") || GameObject.Find("Hex Button Worm 3") || GameObject.Find("Hex Button Worm 4"))
+        }
+        // CAMERA ROTATE
+        if (cameraToggle == 0 && (Input.GetMouseButton(0) || Input.touchCount == 1) && !GameObject.Find("Background") && !GameObject.Find("BackgroundOverlay"))
+        {
+            if (!GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
+            && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
+            && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
+            && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
+            && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
+            && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("Hex Button Wolf 2")
+            && !GameObject.Find("Hex Button Goose")
+            && !GameObject.Find("Hex Button Bee")
+            && !GameObject.Find("Hex Button Beaver")
+            && !GameObject.Find("Restrict Button")
+            && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
+            && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
             {
-                return;
-            }
-
-            if (GameObject.Find("Build Button Frog") || GameObject.Find("Hex Button Frog") || GameObject.Find("Hex Button Frog 2") || GameObject.Find("Hex Button Frog 3"))
-            {
-                return;
-            }
-
-            if (GameObject.Find("Build Button Sparrow") || GameObject.Find("Hex Button Sparrow") || GameObject.Find("Hex Button Sparrow 2"))
-            {
-                return;
-            }
-
-            if (GameObject.Find("Build Button Buzzard") || GameObject.Find("Hex Button Buzzard") || GameObject.Find("Hex Button Buzzard 2"))
-            {
-                return;
-            }
-
-            if (GameObject.Find("Build Button Wolf") || GameObject.Find("Hex Button Wolf") || GameObject.Find("Hex Button Wolf 2"))
-            {
-                return;
-            }
-
-            if (GameObject.Find("Build Button Fly") || GameObject.Find("Hex Button Fly") || GameObject.Find("Hex Button Fly 2"))
-            {
-                return;
-            }
-
-            if (GameObject.Find("Build Button Goose") || GameObject.Find("Hex Button Goose"))
-            {
-                return;
-            }
-
-            if (GameObject.Find("Build Button Beaver") || GameObject.Find("Hex Button Beaver"))
-            {
-                return;
-            }
-
-            if (GameObject.Find("Build Button Bee") || GameObject.Find("Hex Button Bee"))
-            {
-                return;
-            }
-
-            /*
-            if (wormCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("wormText"))
-            {
-                return;
-            }
-
-            if (frogCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("frogText"))
-            {
-                return;
-            }
-
-            if (gooseCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("gooseText"))
-            {
-                return;
-            }
-
-            if (wolfCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("wolfText"))
-            {
-                return;
-            }
-
-            if (sparrowCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("sparrowText"))
-            {
-                return;
-            }
-
-            if (buzzardCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("buzzardText"))
-            {
-                return;
-            }
-
-            if (beaverCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("beaverText"))
-            {
-                return;
-            }
-
-            if (flyCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("flyText"))
-            {
-                return;
-            }
-
-            if (beeCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("beeText"))
-            {
-                return;
-            }
-            */
-
-            CameraZoom(); // PC
-
-            // MOBILE PINCH ZOOM
-            if (Input.touchCount == 2)
-            {
-                Touch tZero = Input.GetTouch(0);
-                Touch tOne = Input.GetTouch(1);
-
-                Vector2 tZeroPrevious = tZero.position - tZero.deltaPosition;
-                Vector2 tOnePrevious = tOne.position - tOne.deltaPosition;
-
-                float oldTouchDistance = Vector2.Distance(tZeroPrevious, tOnePrevious);
-                float currentTouchDistance = Vector2.Distance(tZero.position, tOne.position);
-
-                float deltaDistance = oldTouchDistance - currentTouchDistance;
-                Zoom(deltaDistance, TouchZoomSpeed);
-            }
-
-            if (Camera.main.fieldOfView < minFov)
-            {
-                Camera.main.fieldOfView = 10f;
-            }
-            else
-            if (Camera.main.fieldOfView > maxFov)
-            {
-                Camera.main.fieldOfView = 80f;
+                if (pinch == true)
+                {
+                    pinch = false;
+                }
+                else
+                {
+                    //cameraObj.transform.RotateAround(myGameObj.transform.position, cameraObj.transform.up, -Input.GetAxis("Mouse X") * speed);
+                    transform.RotateAround(myGameObj.transform.position, Vector3.up, -Input.GetAxis("Mouse X") * speed);
+                }
             }
         }
+
+        /*            else if (cameraToggle == 1 && Input.touchCount == 1)
+                    {
+                        if (!GameObject.Find("Hex Button Worm") && !GameObject.Find("Hex Button Worm 2") && !GameObject.Find("Hex Button Worm 3") && !GameObject.Find("Hex Button Worm 4")
+                        && !GameObject.Find("Hex Button Frog") && !GameObject.Find("Hex Button Frog 2") && !GameObject.Find("Hex Button Frog 3")
+                        && !GameObject.Find("Hex Button Sparrow") && !GameObject.Find("Hex Button Sparrow 2")
+                        && !GameObject.Find("Hex Button Buzzard") && !GameObject.Find("Hex Button Buzzard 2")
+                        && !GameObject.Find("Hex Button Fly") && !GameObject.Find("Hex Button Fly 2")
+                        && !GameObject.Find("Hex Button Wolf") && !GameObject.Find("Hex Button Wolf 2")
+                        && !GameObject.Find("Hex Button Goose")
+                        && !GameObject.Find("Hex Button Bee")
+                        && !GameObject.Find("Hex Button Beaver")
+                        && !GameObject.Find("Restrict Button")
+                        && !GameObject.Find("wormText") && !GameObject.Find("frogText") && !GameObject.Find("gooseText") && !GameObject.Find("wolfText")
+                        && !GameObject.Find("sparrowText") && !GameObject.Find("buzzardText") && !GameObject.Find("beaverText") && !GameObject.Find("flyText") && !GameObject.Find("beeText"))
+                        {
+                            float speedDrag = phoneDragSpeed * cfov * Time.deltaTime;
+                            Camera.main.transform.position -= new Vector3(Input.GetAxis("Mouse X") * speedDrag, 0, Input.GetAxis("Mouse Y") * speedDrag);
+                            Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16, 10), transform.position.y, Mathf.Clamp(transform.position.z, -8, 18));
+
+                            myGameObj.transform.position = Camera.main.transform.position;
+                        }
+                    }*/
+
+        // CAMERA ZOOM
+        var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (GameObject.Find("Restrict Button")) return;
+
+        if (GameObject.Find("Build Button Worm") || GameObject.Find("Hex Button Worm") || GameObject.Find("Hex Button Worm 2") || GameObject.Find("Hex Button Worm 3") || GameObject.Find("Hex Button Worm 4"))
+        {
+            return;
+        }
+
+        if (GameObject.Find("Build Button Frog") || GameObject.Find("Hex Button Frog") || GameObject.Find("Hex Button Frog 2") || GameObject.Find("Hex Button Frog 3"))
+        {
+            return;
+        }
+
+        if (GameObject.Find("Build Button Sparrow") || GameObject.Find("Hex Button Sparrow") || GameObject.Find("Hex Button Sparrow 2"))
+        {
+            return;
+        }
+
+        if (GameObject.Find("Build Button Buzzard") || GameObject.Find("Hex Button Buzzard") || GameObject.Find("Hex Button Buzzard 2"))
+        {
+            return;
+        }
+
+        if (GameObject.Find("Build Button Wolf") || GameObject.Find("Hex Button Wolf") || GameObject.Find("Hex Button Wolf 2"))
+        {
+            return;
+        }
+
+        if (GameObject.Find("Build Button Fly") || GameObject.Find("Hex Button Fly") || GameObject.Find("Hex Button Fly 2"))
+        {
+            return;
+        }
+
+        if (GameObject.Find("Build Button Goose") || GameObject.Find("Hex Button Goose"))
+        {
+            return;
+        }
+
+        if (GameObject.Find("Build Button Beaver") || GameObject.Find("Hex Button Beaver"))
+        {
+            return;
+        }
+
+        if (GameObject.Find("Build Button Bee") || GameObject.Find("Hex Button Bee"))
+        {
+            return;
+        }
+
+        /*
+        if (wormCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("wormText"))
+        {
+            return;
+        }
+
+        if (frogCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("frogText"))
+        {
+            return;
+        }
+
+        if (gooseCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("gooseText"))
+        {
+            return;
+        }
+
+        if (wolfCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("wolfText"))
+        {
+            return;
+        }
+
+        if (sparrowCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("sparrowText"))
+        {
+            return;
+        }
+
+        if (buzzardCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("buzzardText"))
+        {
+            return;
+        }
+
+        if (beaverCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("beaverText"))
+        {
+            return;
+        }
+
+        if (flyCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("flyText"))
+        {
+            return;
+        }
+
+        if (beeCollider.bounds.IntersectRay(mouseRay) || GameObject.Find("beeText"))
+        {
+            return;
+        }
+        */
+
+        CameraZoom(); // PC
+
+
+        if (Camera.main.fieldOfView < minFov)
+        {
+            Camera.main.fieldOfView = 10f;
+        }
+        else
+        if (Camera.main.fieldOfView > maxFov)
+        {
+            Camera.main.fieldOfView = 80f;
+        }
+
     }
 
     private void CameraZoom()
