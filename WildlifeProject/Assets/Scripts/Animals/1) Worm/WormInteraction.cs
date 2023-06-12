@@ -178,7 +178,7 @@ public class WormInteraction : MonoBehaviour
             prefabLimit = 0;
         }
 
-        if (!GameObject.Find("Background") &&  Camera.main.fieldOfView <= 65f)
+        if (!GameObject.Find("Background") && Camera.main.fieldOfView <= 65f)
         {
             if (levelPrefabLimit != 1)
             {
