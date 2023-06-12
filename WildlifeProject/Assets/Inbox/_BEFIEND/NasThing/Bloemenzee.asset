@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e8c7b88437a43ff99419cec5a8335fb, type: 3}
-  m_Name: Letter
+  m_Name: Bloemenzee
   m_EditorClassIdentifier: 
-  Title: Bos!
-  Date: Now
-  TextContent: Welcome to Bos!
-  LocationPlace: Bos! Island
-  LocationCity: Bos!
+  Title: Bloemenzee van het Lauwersmeer
+  Date: wo 19 jul
+  TextContent: Ga met de boswachter mee op zoek naar de planten en bloemen van het
+    Lauwersmeer. Onderweg krijg je alles te horen over wat waar staat en waarom ze
+    zo bijzonder zijn.
+  LocationPlace: Lauwersmeer
+  LocationCity: Groningen
   LinkToPage: https://docs.unity3d.com/Manual/realtime-gi-using-enlighten.html
-  Picture: {fileID: 21300000, guid: 79d32d1f558833748b04600ddb3c436c, type: 3}
+  Picture: {fileID: 21300000, guid: e4bad409d0c902549865d43eb099ce8f, type: 3}

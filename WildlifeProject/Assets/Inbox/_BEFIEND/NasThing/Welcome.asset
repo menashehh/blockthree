@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8c7b88437a43ff99419cec5a8335fb, type: 3}
+  m_Name: Welcome
+  m_EditorClassIdentifier: 
+  Title: Welcome to BOS!
+  Date: New!
+  TextContent: Hello there! As a welcome gift to the wonderful world within BOS!,
+    Staatsbosbeheer wants to give you these! Click the link to redeem your reward
+    and see some events we're organising in your area :) Have fun playing!
+  LocationPlace: ' '
+  LocationCity: ' '
+  LinkToPage: https://www.staatsbosbeheer.nl/zoekresultaten?zoekterm=groningen
+  Picture: {fileID: 21300000, guid: 689f33462e7bf6249a74126dd4994a49, type: 3}
