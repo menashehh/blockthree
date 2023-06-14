@@ -10,40 +10,24 @@ public class LetterSpawner : MonoBehaviour
     [SerializeField] private int secondsInBetweenSpawns;
     [SerializeField] private List<LetterContent> allLetters;
 
-    private int letterIndex = 0;
-    
     private void Awake()
     {
         InvokeRepeating(nameof(SpawnLetter), 0f, secondsInBetweenSpawns);
     }
 
+    private int letterSpawnCount = 0;
+
     private void SpawnLetter()
     {
-        if (letterIndex >= allLetters.Count)
+        if (letterSpawnCount >= 3)
         {
             CancelInvoke(nameof(SpawnLetter));
             return;
         }
 
-        LetterContent letterToSpawn = allLetters[letterIndex];
-        mailboxManager.ReceiveNewLetter(letterToSpawn);
+        LetterContent randomLetter = allLetters[Random.Range(0, allLetters.Count)];
+        mailboxManager.ReceiveNewLetter(randomLetter);
 
-        letterIndex++;
+        letterSpawnCount++;
     }
-
-    /**    private int letterSpawnCount = 0;
-
-        private void SpawnLetter()
-        {
-            if (letterSpawnCount >= 3)
-            {
-                CancelInvoke(nameof(SpawnLetter));
-                return;
-            }
-
-            LetterContent randomLetter = allLetters[Random.Range(0, allLetters.Count)];
-            mailboxManager.ReceiveNewLetter(randomLetter);
-
-            letterSpawnCount++;
-        }**/
 }
