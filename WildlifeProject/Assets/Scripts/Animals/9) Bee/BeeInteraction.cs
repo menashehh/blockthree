@@ -124,7 +124,7 @@ public class BeeInteraction : MonoBehaviour
         else BuildButtonBee.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("beeText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
         {
             beeText.SetActive(false);
             npcName = false;
