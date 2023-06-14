@@ -124,7 +124,7 @@ public class BeaverInteraction : MonoBehaviour
         else BuildButtonBeaver.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("beaverText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
         {
             beaverText.SetActive(false);
             npcName = false;

@@ -124,7 +124,7 @@ public class SparrowInteraction : MonoBehaviour
         else BuildButtonSparrow.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("sparrowText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
         {
             sparrowText.SetActive(false);
             npcName = false;

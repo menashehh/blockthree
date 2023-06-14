@@ -124,7 +124,7 @@ public class WolfInteraction : MonoBehaviour
         else BuildButtonWolf.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("wolfText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
         {
             wolfText.SetActive(false);
             npcName = false;

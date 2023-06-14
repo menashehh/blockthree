@@ -123,7 +123,7 @@ public class GooseInteraction : MonoBehaviour
         else BuildButtonGoose.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("gooseText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
         {
             gooseText.SetActive(false);
             npcName = false;
