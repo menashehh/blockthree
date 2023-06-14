@@ -124,7 +124,7 @@ public class BuzzardInteraction : MonoBehaviour
         else BuildButtonBuzzard.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("buzzardText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
         {
             buzzardText.SetActive(false);
             npcName = false;

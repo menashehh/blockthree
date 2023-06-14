@@ -124,7 +124,7 @@ public class FlyInteraction : MonoBehaviour
         else BuildButtonFly.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("flyText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
+        EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
         {
             flyText.SetActive(false);
             npcName = false;

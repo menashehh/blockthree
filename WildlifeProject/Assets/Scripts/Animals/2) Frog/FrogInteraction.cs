@@ -127,7 +127,7 @@ public class FrogInteraction : MonoBehaviour
         else BuildButtonFrog.SetActive(false);
 
         if (!GameObject.Find("Background") && GameObject.Find("frogText") && EventSystem.current.IsPointerOverGameObject() && EventSystem.current.currentSelectedGameObject != null &&
-       EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons"))
+       EventSystem.current.currentSelectedGameObject.CompareTag("Close Buttons") && (Input.GetMouseButtonDown(0) || Input.touchCount == 1))
         {
             frogText.SetActive(false);
             npcName = false;
